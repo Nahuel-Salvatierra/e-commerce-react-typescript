@@ -1,4 +1,3 @@
-export default CardProduct;
 import { useState } from "react";
 import Input from "./Input";
 import { INPUTS_PRODUCT } from "./const/node.elements.product";
