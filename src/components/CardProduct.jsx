@@ -14,3 +14,5 @@ const CardProduct = ({ titleCard, cardDescription }) => {
     </div>
   )
 }
+
+export default CardProduct

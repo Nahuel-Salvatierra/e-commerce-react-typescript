@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "./navbar/NavBar";
 import Footer from "./footer/Footer";
-import CardProduct from "./cards/CardProduct";
+import CardProduct from "./CardProduct";
 
 export default function Layout() {
 	return (

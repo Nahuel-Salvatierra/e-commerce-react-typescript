@@ -1,0 +1,64 @@
+export const INPUTS_LOGIN ={
+  email:{
+    id:1,
+    name:'email',
+    type:'email',
+    required:true,
+    label:'Email',
+    placeholder:'example@email.com'
+  },
+  password:{
+    id:2,
+    name:'password',
+    type:'password',
+    required:true,
+    label:'Contraseña',
+    placeholder:'********'
+  }
+}
+
+export const INPUTS_REGISTER ={
+  name:{
+    id:1,
+    name:'name',
+    type:'text',
+    required:true,
+    label:'Nombre',
+    placeholder:'Nombre',
+    pattern:`^[a-zA-Z]{4,}$`
+  },
+  lastName:{
+    id:2,
+    name:'lastName',
+    type:'text',
+    required:true,
+    label:'Apellido',
+    placeholder:'Apellido',
+    pattern:`^[a-zA-Z]{4,}$`
+  },
+  email:{
+    id:3,
+    name:'email',
+    type:'email',
+    required:true,
+    label:'Email',
+    placeholder:'example@email.com',
+  },
+  password:{
+    id:4,
+    name:'password',
+    type:'password',
+    required:true,
+    label:'Contraseña',
+    placeholder:'********',
+    pattern:`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`
+  },
+  confirmPassword:{
+    id:5,
+    name:'confirmPassword',
+    type:'password',
+    required:true,
+    label:'Confirmar contraseña',
+    placeholder:'********',
+  }
+}
