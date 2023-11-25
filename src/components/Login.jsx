@@ -20,12 +20,10 @@ export default function Login() {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleSubmit} className="">
 			<Input {...INPUTS_LOGIN.email} onChange={onChange} />
-			<br />
 			<Input {...INPUTS_LOGIN.password} onChange={onChange}/>
-			<br />
-			<Button type={"submit"} text={"Login"} style={"secondary"} />
+			<Button type={"submit"} text={"Login"} style={"btn btn-neutral"} />
 		</form>
 	);
 }

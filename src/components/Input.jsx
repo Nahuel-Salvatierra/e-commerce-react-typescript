@@ -5,7 +5,7 @@ function Input({ ...props }) {
 			<br />
 			{props.message?<span>{props.message}</span>:null}
 			<div/>
-			<input {...props} />
+			<input className="input input-bordered w-full max-w-xs mb-2" {...props} />
 		</>
 	);
 }

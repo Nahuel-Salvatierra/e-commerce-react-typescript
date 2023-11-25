@@ -1,14 +1,14 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { Fragment, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
-const OffCanvas = ({ onClose }) => {
-  const [open, setOpen] = useState(true)
+const OffCanvas = ({ onClose, offcanvasTitle, offcanvasContent }) => {
+  const [open, setOpen] = useState(true);
 
   const handleOnClose = () => {
     setOpen(false);
     onClose();
-  }
+  };
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -47,7 +47,10 @@ const OffCanvas = ({ onClose }) => {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <div className="absolute left-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4" onClick={handleOnClose}>
+                    <div
+                      className="absolute left-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4"
+                      onClick={handleOnClose}
+                    >
                       <button
                         type="button"
                         className="relative rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
@@ -60,12 +63,16 @@ const OffCanvas = ({ onClose }) => {
                     </div>
                   </Transition.Child>
                   <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
+                    {/* Titulo */}
                     <div className="px-4 sm:px-6">
                       <Dialog.Title className="text-base font-semibold leading-6 text-gray-900">
-                        Panel title
+                        {offcanvasTitle}
                       </Dialog.Title>
                     </div>
-                    <div className="relative mt-6 flex-1 px-4 sm:px-6">{/* Your content */}</div>
+                    {/* Contenido */}
+                    <div className="relative mt-6 flex-1 px-4 sm:px-6">
+                      {offcanvasContent}
+                    </div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
@@ -74,7 +81,7 @@ const OffCanvas = ({ onClose }) => {
         </div>
       </Dialog>
     </Transition.Root>
-  )
-}
+  );
+};
 
 export default OffCanvas;
