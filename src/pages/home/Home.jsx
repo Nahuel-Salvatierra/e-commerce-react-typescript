@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getProducts } from "../../api/product.api";
 import CardProduct from "../../components/cards/CardProduct";
 
-const Home = () => {
+const Home = (props) => {
 	const [products, setProduct] = useState([]);
 
 	useEffect(() => {
@@ -12,7 +12,7 @@ const Home = () => {
 	return (
 		<div>
 			<div className="container mx-auto flex flex-wrap">
-				<CardProduct />
+				<CardProduct {...props}/>
 			</div>
 		</div>
 	);

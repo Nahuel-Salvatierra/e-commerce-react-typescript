@@ -4,8 +4,9 @@ import Logo from "../../assets/logo/animarte-logo.png";
 import OffCanvas from "./navComponent/OffCanvas";
 import Login from "../auth/Login";
 import CartOffCanvas from "./navComponent/contentOffCanvas/CartOffCanvas";
+import useCart from "./../../hook/useCart";
 
-const NavBar = () => {
+const NavBar = (props) => {
   const [cartOffcanvasShow, setCartOffcanvasShow] = useState(false);
   const [userOffcanvasShow, setUserOffcanvasShow] = useState(false);
 
@@ -24,7 +25,11 @@ const NavBar = () => {
     <div className="navbar bg-neutral">
       <div className="flex-1">
         <a className="ps-5 text-xl">
-          <img src={Logo} alt="" className="nav-logo w-[60px]" />
+          <img
+            src={Logo}
+            alt="logo animarte"
+            className="nav-logo w-[60px] bg-white rounded-[20%]"
+          />
         </a>
       </div>
       <div className="flex-none">
@@ -44,7 +49,13 @@ const NavBar = () => {
                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
               />
             </svg>
-            {cartOffcanvasShow && <OffCanvas offcanvasTitle={"Carrito de Compras"} offcanvasContent={<CartOffCanvas onBuy={handleBuy} />} onClose={closeCart} />}
+            {cartOffcanvasShow && (
+              <OffCanvas
+                offcanvasTitle={"Carrito de Compras"}
+                offcanvasContent={<CartOffCanvas {...props}/>}
+                onClose={closeCart}
+              />
+            )}
           </button>
           <button onClick={handleUser}>
             <svg
@@ -62,7 +73,13 @@ const NavBar = () => {
               />
             </svg>
 
-            {userOffcanvasShow && <OffCanvas offcanvasTitle={"Login"} offcanvasContent={<Login />} onClose={closeCart} />}
+            {userOffcanvasShow && (
+              <OffCanvas
+                offcanvasTitle={"Login"}
+                offcanvasContent={<Login />}
+                onClose={closeCart}
+              />
+            )}
           </button>
         </div>
       </div>

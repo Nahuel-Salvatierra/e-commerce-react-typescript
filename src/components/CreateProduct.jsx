@@ -17,7 +17,6 @@ export default function CreateProduct() {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const product = new FormData(event.target);
-		console.log(product)
 		try {
 			const res = await createProduct(product);
 			for (let value in productForm) {

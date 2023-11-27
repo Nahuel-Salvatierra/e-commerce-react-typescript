@@ -5,6 +5,7 @@ import Register from "./components/auth/Register";
 import Layout from "./components/Layout";
 import CreateProduct from "./components/CreateProduct";
 import  Home  from "./pages/home/Home";
+import Test from  "./pages/home/Test"
 function App() {
 	return (
 		<Routes>
@@ -12,6 +13,7 @@ function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/register" element={<Register />} />
 				<Route path="/login" element={<Login />} />
+				<Route path="/test" element={<Test />}/>
 				<Route path="/product" element={<CreateProduct />} />
 			</Route>
 		</Routes>

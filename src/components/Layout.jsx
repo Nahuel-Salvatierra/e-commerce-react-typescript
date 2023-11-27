@@ -4,13 +4,16 @@ import Footer from "./footer/Footer";
 import CardProduct from "./cards/CardProduct"
 
 export default function Layout() {
+
+	const { cartItems, addToCart } = useCart();
+
 	return (
 		<div className="bg-primary">
 			<header>
-				<NavBar />
+				<NavBar {...cartItems}/>
 			</header>
 
-				<Outlet />
+				<Outlet {addToCart}/>
 
 			<footer>
 				<Footer />
