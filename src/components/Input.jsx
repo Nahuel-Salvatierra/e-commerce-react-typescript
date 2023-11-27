@@ -1,7 +1,7 @@
 function Input({ ...props }) {
 	return (
 		<>
-			<label>{props.label}</label>
+			<label className="text-white" htmlFor={props.name}>{props.label}</label>
 			<br />
 			{props.message?<span>{props.message}</span>:null}
 			<div/>
