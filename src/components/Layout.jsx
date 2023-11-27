@@ -10,17 +10,8 @@ export default function Layout() {
 				<NavBar />
 			</header>
 
-			<main>
 				<Outlet />
-				<br />
-				<div className="container mx-auto flex flex-wrap gap-5" >
-					<CardProduct />
-					<CardProduct />
-					<CardProduct />
-					<CardProduct />
-					<CardProduct />
-				</div>
-			</main>
+
 			<footer>
 				<Footer />
 			</footer>

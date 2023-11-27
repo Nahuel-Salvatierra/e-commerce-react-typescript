@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-import Button from "./Button";
-import { INPUTS_LOGIN } from "./const/node.element.auth";
-import Input from "./Input";
-import useAuth from "../hook/useAuth";
-import { login } from "../api/auth.api";
+import Button from "../Button";
+import { INPUTS_LOGIN } from "../const/node.element.auth";
+import Input from "../Input";
+import useAuth from "../../hook/useAuth";
+import { login } from "../../api/auth.api";
 
 export default function Login() {
 	const [form, setForm] = useState("");
