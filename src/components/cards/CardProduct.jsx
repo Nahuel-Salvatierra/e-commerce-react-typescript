@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { getImage } from "../../api/product.api";
 import useCart from "./../../hook/useCart";
-import { ProductProvider } from "../../context/ProductProvider";
 
 const CardProduct = () => {
-	const { cartItems, addToCart, setCartItems } = useCart();
+	const { addToCart } = useCart();
 
-	const products = [];
+	const [products, setProducts] = useState([]);
+
 	const handleBuy = (selectedProduct) => {
 		addToCart(selectedProduct);
 	};
@@ -22,10 +22,11 @@ const CardProduct = () => {
 					response.data.map(async (product) => {
 						const image = product.image;
 						const imageUrl = await getImage(image);
+						product.amount = 0;
 						return { ...product, images: imageUrl };
 					})
 				);
-				setCartItems(updatedProducts);
+				setProducts(updatedProducts);
 			} catch (error) {
 				console.error(error);
 			}
@@ -35,7 +36,7 @@ const CardProduct = () => {
 
 	return (
 		<div className="product-list">
-			{cartItems.map((product) => (
+			{products.map((product) => (
 				<div
 					key={product.id}
 					className="card w-96 bg-base-100 shadow-xl border m-3 mb-10"

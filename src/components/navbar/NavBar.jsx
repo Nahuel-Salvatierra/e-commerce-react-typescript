@@ -54,6 +54,7 @@ const NavBar = () => {
 								offcanvasTitle={"Carrito de Compras"}
 								offcanvasContent={<CartOffCanvas />}
 								onClose={closeCart}
+								showButton={true}
 							/>
 						)}
 					</button>

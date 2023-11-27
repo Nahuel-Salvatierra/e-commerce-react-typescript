@@ -28,10 +28,12 @@ export default function Register() {
 		event.preventDefault();
 		delete form.confirmPassword;
 
-    try {
-      const res = await signUp(form)
-      if (res.status === 201) navigate('/login', {replace:true})
-    } catch (error) {}
+		try {
+			const {res} = await signUp(form);
+			if (res.status === 201) navigate("/login", { replace: true });
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (

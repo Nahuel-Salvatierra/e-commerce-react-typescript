@@ -3,12 +3,18 @@ import { useState } from "react";
 
 const ProductContext = createContext({});
 
-export function ProductProvider({ children }) {
+export function ProductProvider({ children }) { 
 	const [cartItems, setCartItems] = useState([]);
 
 	const addToCart = (product) => {
-		setCartItems(() => [...cartItems, product]);
-		console.log(cartItems);
+		const existingProduct = cartItems.find((existProduct) => existProduct.id === product.id);
+		if (existingProduct === undefined) {
+			product.amount = 1
+			setCartItems(() => [...cartItems, product]);
+		} else{
+		const updatedCart = cartItems.map((item) => item.id === existingProduct.id ? {...item, amount: item.amount + 1} : item )
+		setCartItems(updatedCart);
+		}
 	};
 
 	const removeFromCart = (productId) => {
