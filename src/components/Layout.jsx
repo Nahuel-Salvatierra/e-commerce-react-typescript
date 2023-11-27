@@ -5,15 +5,13 @@ import CardProduct from "./cards/CardProduct"
 
 export default function Layout() {
 
-	const { cartItems, addToCart } = useCart();
-
 	return (
 		<div className="bg-primary">
 			<header>
-				<NavBar {...cartItems}/>
+				<NavBar/>
 			</header>
 
-				<Outlet {addToCart}/>
+				<Outlet/>
 
 			<footer>
 				<Footer />
