@@ -2,20 +2,7 @@ import React, { useState, useEffect } from "react";
 import useCart from "./../../../../hook/useCart";
 
 const CartOffCanvas = () => {
-	const { cartItems, removeFromCart, setCartItems } = useCart();
-
-	const addAmount = (item) => {
-		item.amount++;
-		setCartItems([...cartItems]);
-	};
-
-	const removeAmount = (item) => {
-		const amountProduct = item.amount;
-		if (amountProduct > 1) {
-			item.amount--;
-			setCartItems([...cartItems]);
-		}
-	};
+	const { cartItems, removeFromCart, setCartItems, removeAmount, addAmount } = useCart();
 
 	return (
 		<div>
@@ -23,8 +10,8 @@ const CartOffCanvas = () => {
 				<div className="flex bg-neutral w-full p-2 mb-4" key={index}>
 					<div className="flex-shrink-0">
 						<img
-							className="object-contain h-48 w-50"
-							src={item.images}
+							className="object-cover h-48 w-50"
+							src={item.images} width={200} height={200}
 							alt="Producto"
 						/>
 					</div>

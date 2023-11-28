@@ -9,7 +9,8 @@ const CardProduct = () => {
 	const [products, setProducts] = useState([]);
 
 	const handleBuy = (selectedProduct) => {
-		addToCart(selectedProduct);
+		const newProduct = {...selectedProduct}
+		addToCart(newProduct);
 	};
 
 	useEffect(() => {
@@ -22,7 +23,7 @@ const CardProduct = () => {
 					response.data.map(async (product) => {
 						const image = product.image;
 						const imageUrl = await getImage(image);
-						product.amount = 0;
+						product.amount = 1;
 						return { ...product, images: imageUrl };
 					})
 				);
@@ -35,7 +36,7 @@ const CardProduct = () => {
 	}, []);
 
 	return (
-		<div className="product-list">
+		<div className="flex flex-wrap">
 			{products.map((product) => (
 				<div
 					key={product.id}
@@ -44,8 +45,9 @@ const CardProduct = () => {
 					<figure>
 						<img
 							src={product.images}
-							className="bg-contain"
+							className="h-80 w-50 object-cover"
 							alt={product.title}
+							width={500}
 						/>
 					</figure>
 					<div className="card-body">
@@ -57,9 +59,7 @@ const CardProduct = () => {
 							<button
 								className="btn btn-primary"
 								onClick={() => handleBuy(product)}
-							>
-								{" "}
-								Comprar{" "}
+							>Comprar
 							</button>
 						</div>
 					</div>
