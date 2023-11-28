@@ -23,7 +23,6 @@ export default function CreateProduct() {
 				productForm[value] = "";
 			}
 		} catch (error) {
-			console.log(error)
 		}
 	};
 

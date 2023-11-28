@@ -28,10 +28,14 @@ export default function Login() {
 	};
 
 	return (
-		<form onSubmit={handleSubmit} className="">
-			<Input {...INPUTS_LOGIN.email} onChange={onChange} />
-			<Input {...INPUTS_LOGIN.password} onChange={onChange} />
-			<Button type={"submit"} text={"Login"} style={"btn btn-neutral"} />
-		</form>
+		<div>
+			<form onSubmit={handleSubmit} className="">
+				<Input {...INPUTS_LOGIN.email} onChange={onChange} />
+				<Input {...INPUTS_LOGIN.password} onChange={onChange} />
+				<div className="h-full">
+					<Button type={"submit"} text={"Login"} style={"btn btn-neutral w-full "} />
+				</div>
+			</form>
+		</div>
 	);
 }

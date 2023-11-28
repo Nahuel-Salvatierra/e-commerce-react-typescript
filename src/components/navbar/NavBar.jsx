@@ -5,10 +5,13 @@ import OffCanvas from "./navComponent/OffCanvas";
 import Login from "../auth/Login";
 import CartOffCanvas from "./navComponent/contentOffCanvas/CartOffCanvas";
 import useCart from "./../../hook/useCart";
+import Register from './../../components/auth/Register.jsx'
+import LayoutAsk from './../../components/LayoutAsk'
 
 const NavBar = () => {
 	const [cartOffcanvasShow, setCartOffcanvasShow] = useState(false);
 	const [userOffcanvasShow, setUserOffcanvasShow] = useState(false);
+	const [checkRegister, setCheckRegister] = useState(true)
 
 	const handleCart = () => {
 		setCartOffcanvasShow(true);
@@ -76,8 +79,8 @@ const NavBar = () => {
 
 						{userOffcanvasShow && (
 							<OffCanvas
-								offcanvasTitle={"Login"}
-								offcanvasContent={<Login />}
+								offcanvasTitle={checkRegister ? 'Register' : "Login"}
+								offcanvasContent={<LayoutAsk />}
 								onClose={closeCart}
 							/>
 						)}
