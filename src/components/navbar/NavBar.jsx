@@ -80,7 +80,7 @@ const NavBar = () => {
 						{userOffcanvasShow && (
 							<OffCanvas
 								offcanvasTitle={checkRegister ? 'Register' : "Login"}
-								offcanvasContent={<LayoutAsk />}
+								offcanvasContent={<LayoutAsk onClose={closeCart}/>}
 								onClose={closeCart}
 							/>
 						)}

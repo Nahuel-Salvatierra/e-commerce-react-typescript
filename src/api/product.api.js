@@ -32,3 +32,8 @@ export const getImage = async (img) => {
     return null;
   }
 };
+
+export const getOne= async (id) => {
+  const response = await axios.get(`/product/${id}`)
+  return response
+}

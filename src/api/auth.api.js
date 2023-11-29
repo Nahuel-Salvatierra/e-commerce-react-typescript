@@ -26,7 +26,7 @@ export async function login(data) {
 
   return {
     res: {
-      data: res.data,
+      data: res.data.user,
       status: res.status,
       token: res.data.accessToken
     }

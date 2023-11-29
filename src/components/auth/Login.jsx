@@ -7,7 +7,7 @@ import useAuth from "../../hook/useAuth";
 import { login } from "../../api/auth.api";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Login({onClose}) {
 	const [form, setForm] = useState("");
 	const navigate = useNavigate()
 	const { setAuth } = useAuth();
@@ -21,6 +21,8 @@ export default function Login() {
 		try {
 			const { res } = await login(form);
 			setAuth({ token: res.token });
+			console.log(res)
+			onClose()
 			navigate("/", { replace: true })
 		} catch (err) {
 			console.log(err);
@@ -33,7 +35,7 @@ export default function Login() {
 				<Input {...INPUTS_LOGIN.email} onChange={onChange} />
 				<Input {...INPUTS_LOGIN.password} onChange={onChange} />
 				<div className="h-full">
-					<Button type={"submit"} text={"Login"} style={"btn btn-neutral w-full "} />
+					<Button type={"submit"} text={"Login"} style={"btn btn-neutral w-80 mb-5 "} />
 				</div>
 			</form>
 		</div>
