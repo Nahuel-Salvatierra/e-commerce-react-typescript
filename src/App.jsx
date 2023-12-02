@@ -6,6 +6,9 @@ import Register from "./components/auth/Register";
 import Layout from "./components/Layout";
 import CreateProduct from "./components/CreateProduct";
 import Home from "./pages/home/Home";
+import RequireAuth from "./components/auth/RequiredAuth";
+import Dashboard from "./pages/dasboard/Dashboard";
+import Unauthorized from './pages/Unauthorized'
 // Enrutado
 import axios from "axios";
 import { getImage } from "./api/product.api";
@@ -33,6 +36,11 @@ function App() {
     fetchProduct();
   }, []);
 
+  const ROLES ={
+    user:'user',
+    admin:'admin'
+  }
+
   return (
     <Routes>
       <Route path="" element={<Layout />}>
@@ -41,6 +49,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/product" element={<CreateProduct />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
+
         {products.map((product) => (
           <Route
             key={product.title}
@@ -49,9 +59,9 @@ function App() {
           />
         ))}
         {/* we want to protect these routes */}
-        {/* <Route element={<RequireAuth allowedRoles={[ROLES.user, ROLES.admin]} />}>
+        <Route element={<RequireAuth allowedRoles={[ROLES.user, ROLES.admin]} />}>
           <Route path="/dashboard" element={<Dashboard />} />
-        </Route> */}
+        </Route>
       </Route>
     </Routes>
   );
