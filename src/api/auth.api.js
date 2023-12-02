@@ -24,12 +24,12 @@ export async function login(data) {
     headers: { 'Content-Type': 'application/json' }
   })
 
-  return {
-    res: {
-      data: res.data.user,
-      status: res.status,
-      token: res.data.accessToken
-    }
+  const response = {
+    accessToken: res.data.accessToken,
+    userData: res.data.user,
+    status: res.status
   }
+
+  return response
 
 }

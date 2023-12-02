@@ -19,13 +19,12 @@ export default function Login({onClose}) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const { res } = await login(form);
-			setAuth({ token: res.token });
-			console.log(res)
-			onClose()
+			const  res  = await login(form);
+			// console.log(res)
+			setAuth({ user: res.userData, token: res.accessToken });
+			// onClose()
 			navigate("/", { replace: true })
 		} catch (err) {
-			console.log(err);
 		}
 	};
 

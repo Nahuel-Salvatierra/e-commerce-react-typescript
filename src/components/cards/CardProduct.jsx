@@ -6,9 +6,12 @@ import useCart from "./../../hook/useCart";
 import { Link } from "react-router-dom";
 
 const CardProduct = () => {
+  // Context
   const { addToCart } = useCart();
-
+  // State
   const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPagination] = useState(1);
+  const pageProduct = 3;
 
   const handleBuy = (selectedProduct) => {
     const newProduct = { ...selectedProduct };
@@ -33,12 +36,11 @@ const CardProduct = () => {
       }
     };
     fetchProduct();
-  }, []);
+  }, [currentPage]);
 
   return (
     <div className="flex flex-wrap">
       {products.map((product) => (
-        console.log(product),
         <div
           key={product.id}
           className="card w-96 bg-base-100 shadow-xl border m-3 mb-10"

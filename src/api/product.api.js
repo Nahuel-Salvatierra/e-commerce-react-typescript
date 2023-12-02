@@ -20,7 +20,7 @@ export const getImage = async (img) => {
     const response = await axios.get(`/product/image/${img}`, { responseType: 'arraybuffer' });
 
     const contentType = response.headers["content-type"];
-    if (contentType && contentType.startsWith("image/jpeg")) {
+    if (contentType && (contentType.startsWith("image/jpeg") || contentType.startsWith("image/png"))) {
       const imageUrl = URL.createObjectURL(new Blob([response.data]));
       return imageUrl;
     } else {

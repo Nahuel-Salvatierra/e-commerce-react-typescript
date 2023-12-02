@@ -8,7 +8,7 @@ export default {
 
           "primary": "#1f2937",
 
-          "secondary": "#blueviolet",
+          "secondary": "fff",
 
           "accent": "#111827",
 
@@ -16,9 +16,9 @@ export default {
 
           "base-100": "#f2ffff",
 
-          "info": "#00b6fa",
+          "info": "#3b82f6",
 
-          "success": "#00f7ac",
+          "success": "#22c55e",
 
           "warning": "#e84b00",
 
