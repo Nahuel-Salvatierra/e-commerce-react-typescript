@@ -20,16 +20,23 @@ export async function signUp(data) {
 
 export async function login(data) {
   const dataSend = JSON.stringify(data)
-  const res = await axios.post('/auth/login', dataSend, {
-    headers: { 'Content-Type': 'application/json' }
-  })
+  let res
+  let response
+  try {
+    const res = await axios.post('/auth/login', dataSend, {
+      headers: { 'Content-Type': 'application/json' }
+    })
 
-  const response = {
-    accessToken: res.data.accessToken,
-    userData: res.data.user,
-    status: res.status
+  } catch (error) {
+    console.log(error)
+    throw error
+  } finally {
+    response = {
+      accessToken: res.data.accessToken,
+      userData: res.data.user,
+      status: res.status,
+      statusCode: res.response.data.statusCode
+    }
   }
-
   return response
-
 }

@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
+import useAuth from "../../hook/useAuth"; 
+import { Admin, User } from "./index";
 
 const Dashboard = () => {
-  return (
-    <div>
-        
-    </div>
-  )
-}
+	const { auth } = useAuth();
+	return (
+		<div>
+			This is a Dashboard
+			{auth.user.userRole == "admin" ? <Admin/> : <User/>}
+		</div>
+	);
+};
 
-export default Dashboard
+export default Dashboard;

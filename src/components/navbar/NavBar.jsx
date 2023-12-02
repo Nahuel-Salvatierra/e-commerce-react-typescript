@@ -31,7 +31,7 @@ const NavBar = () => {
 					<img
 						src={Logo}
 						alt="logo animarte"
-						className="nav-logo w-[60px] bg-white rounded-[20%]"
+						className="nav-logo w-[60px] bg-white rounded-[50%]"
 					/>
 				</a>
 			</div>
@@ -79,7 +79,7 @@ const NavBar = () => {
 
 						{userOffcanvasShow && (
 							<OffCanvas
-								offcanvasTitle={checkRegister ? 'Register' : "Login"}
+								offcanvasTitle={checkRegister ? 'Register' : 'Login'}
 								offcanvasContent={<LayoutAsk onClose={closeCart}/>}
 								onClose={closeCart}
 							/>

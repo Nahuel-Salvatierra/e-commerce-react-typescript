@@ -7,9 +7,9 @@ import useAuth from "../../hook/useAuth";
 import { login } from "../../api/auth.api";
 import { useNavigate } from "react-router-dom";
 
-export default function Login({onClose}) {
+export default function Login({ onClose }) {
 	const [form, setForm] = useState("");
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 	const { setAuth } = useAuth();
 
 	const onChange = (e) => {
@@ -18,13 +18,19 @@ export default function Login({onClose}) {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		let res
 		try {
-			const  res  = await login(form);
-			// console.log(res)
+			res = await login(form);
+			navigate("/", { replace: true });
 			setAuth({ user: res.userData, token: res.accessToken });
-			// onClose()
-			navigate("/", { replace: true })
+			window.localStorage.setItem("token", res.accessToken);
+			window.localStorage.setItem("user", JSON.stringify(res.userData));
 		} catch (err) {
+			if (res.statusCode === 401) {
+				alert('campos malos')
+			}
+		} finally{
+			console.log(res)
 		}
 	};
 
@@ -34,7 +40,11 @@ export default function Login({onClose}) {
 				<Input {...INPUTS_LOGIN.email} onChange={onChange} />
 				<Input {...INPUTS_LOGIN.password} onChange={onChange} />
 				<div className="h-full">
-					<Button type={"submit"} text={"Login"} style={"btn btn-neutral w-80 mb-5 "} />
+					<Button
+						type={"submit"}
+						text={"Login"}
+						style={"btn btn-neutral w-80 mb-5 "}
+					/>
 				</div>
 			</form>
 		</div>
