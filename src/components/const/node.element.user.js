@@ -1,0 +1,35 @@
+export const INPUTS_USER ={
+  name:{
+    id:1,
+    name:'name',
+    type:'text',
+    required:true,
+    label:'Nombre',
+    placeholder:'Nombre',
+    pattern:`^[a-zA-Z]{4,}$`
+  },
+  lastName:{
+    id:2,
+    name:'lastName',
+    type:'text',
+    required:true,
+    label:'Apellido',
+    placeholder:'Apellido',
+    pattern:`^[a-zA-Z]{4,}$`
+  },
+  email:{
+    id:3,
+    name:'email',
+    type:'email',
+    required:true,
+    label:'Email',
+    placeholder:'example@email.com',
+  },
+  phone:{
+    id:4,
+    name:'phone',
+    type:'number',
+    label:'Teléfono',
+    placeholder:'11 1234 5678',
+  },
+}
