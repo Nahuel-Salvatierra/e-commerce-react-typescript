@@ -1,5 +1,4 @@
 import axios from './axios.config'
-import * as product from './product.json'
 
 export const createProduct = async (data) => {
   const res = await axios.post('/product/create', data,

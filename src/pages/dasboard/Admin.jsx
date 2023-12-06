@@ -1,3 +1,3 @@
 export function Admin() {
-	return <div>Admin</div>;
+	return <section className="text-white">Admin</section>;
 }

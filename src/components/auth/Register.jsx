@@ -31,7 +31,7 @@ export default function Register( {onClose} ) {
     try {
       const { res } = await signUp(form);
       onClose()
-      if (res.status === 201) navigate("/login", { replace: true });
+      if (res.status === 201) navigate("/", { replace: true });
     } catch (error) {
       console.log(error);   
     }

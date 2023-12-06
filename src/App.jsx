@@ -46,8 +46,6 @@ function App() {
       <Route path="" element={<Layout />}>
         {/* public routes */}
         <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/product" element={<CreateProduct />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
 
