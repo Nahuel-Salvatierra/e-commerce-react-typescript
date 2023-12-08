@@ -51,7 +51,7 @@ export const INPUTS_REGISTER ={
     required:true,
     label:'Contraseña',
     placeholder:'********',
-    pattern:`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`
+    // pattern:`^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`
   },
   confirmPassword:{
     id:5,

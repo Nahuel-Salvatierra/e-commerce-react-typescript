@@ -9,8 +9,8 @@ export const AuthProvider = ({ children }) => {
 		localStorage.removeItem("user");
 		localStorage.removeItem('token')
 	}
-	const readableUser = storedUser;
-	JSON.parse(storedUser);
+
+	const readableUser = 	JSON.parse(storedUser);
 
 	const [auth, setAuth] = useState(
 		storedToken && readableUser

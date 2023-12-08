@@ -1,18 +1,17 @@
-import { AxiosError } from "axios";
 import axios from "./axios.config";
 
 export async function signUp(data) {
-	const dataSend = JSON.stringify(data);
-	const res = await axios.post("/auth/signup", dataSend, {
-		headers: { "Content-Type": "application/json" },
-	});
+    const dataSend = JSON.stringify(data);
+    const res = await axios.post("/auth/signup", dataSend, {
+        headers: { "Content-Type": "application/json" },
+    });
 
-	return {
-		res: {
-			data: res.data,
-			status: res.status,
-		},
-	};
+    return {
+        res: {
+            data: res.data,
+            status: res.status,
+        },
+    };
 }
 
 export async function login(data) {

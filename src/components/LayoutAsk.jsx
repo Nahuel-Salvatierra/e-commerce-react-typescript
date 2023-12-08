@@ -19,7 +19,7 @@ function LayoutAsk( {onClose} ) {
       <p className="">
         {compRegistrarse ? "¿Tienes una cuenta?" : "¿No tienes una cuenta?"}{" "}
         <a href="#" onClick={toggleRegistrarse} className="text-blue-600">
-          {compRegistrarse ? "Regístrate aquí." : "Inicia sesión aquí."}
+          {compRegistrarse ? "Inicia sesión aquí.": "Regístrate aquí."}
         </a>
       </p>
     </div>

@@ -6,12 +6,18 @@ import Input from "../Input";
 import useAuth from "../../hook/useAuth";
 import { login } from "../../api/auth.api";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import Alerts from "../Alerts";
 
 export default function Login({ onClose }) {
-	const [form, setForm] = useState("");
-	const navigate = useNavigate();
-	const { setAuth } = useAuth();
+    const notify = () => toast("Campos incorrectos");
+    const [form, setForm] = useState("");
+    const navigate = useNavigate();
+    const { setAuth } = useAuth();
 
+    const onChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
 
 
 
@@ -60,19 +66,20 @@ export default function Login({ onClose }) {
 		}
 	};
 
-	return (
-		<div>
-			<form onSubmit={handleSubmit} className="">
-				<Input {...INPUTS_LOGIN.email} onChange={onChange} />
-				<Input {...INPUTS_LOGIN.password} onChange={onChange} />
-				<div className="h-full">
-					<Button
-						type={"submit"}
-						text={"Login"}
-						style={"btn btn-neutral w-80 mb-5 "}
-					/>
-				</div>
-			</form>
-		</div>
-	);
+    return (
+        <div>
+            <form onSubmit={handleSubmit} className="">
+                <Input {...INPUTS_LOGIN.email} onChange={onChange} />
+                <Input {...INPUTS_LOGIN.password} onChange={onChange} />
+                <div className="h-full">
+                    <Button
+                        type={"submit"}
+                        text={"Login"}
+                        style={"btn btn-neutral w-80 mb-5 "}
+                    />
+                    <Alerts />
+                </div>
+            </form>
+        </div>
+    );
 }
