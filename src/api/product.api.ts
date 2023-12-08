@@ -9,35 +9,20 @@ export const createProduct = async (data) => {
 	return res;
 };
 
-class Product {
-  id: number;
-  category: string;
-  price: number;
-  description: string;
-
-  constructor(data: any) {
-    this.id = data.id;
-    this.category = data.category;
-    this.price = data.price;
-    this.description = data.description;
-  }
-}
+type Product = {
+	id: number;
+	category: string;
+	price: number;
+	description: string;
+};
 
 export const getProducts = async (): Promise<Product[]> => {
-  try {
-    const res: AxiosResponse<Product[]> = await axios.get("/product");
-
-    if (res.data) {
-      const productArray: Product[] = res.data.map((product: any) => new Product(product));
-      return productArray;
-    }
-
-    throw new Error("No data received from the server");
-
-  } catch (error) {
-    console.error("Error fetching products:", error);
-    throw error;
-  }
+	try {
+		const res = await axios.get("/product");
+		return res.data;
+	} catch (error) {
+		throw new Error(error.message);
+	}
 };
 
 export const getImage = async (img) => {

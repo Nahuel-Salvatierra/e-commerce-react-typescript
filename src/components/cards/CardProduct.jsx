@@ -1,42 +1,20 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { getImage } from "../../api/product.api";
+import React, { useState } from "react";
 import useCart from "./../../hook/useCart";
 // Enrutado
 import { Link } from "react-router-dom";
+import { useProducts } from "../../hook/useProducts";
 
 const CardProduct = () => {
-  // Context
   const { addToCart } = useCart();
-  // State
-  const [products, setProducts] = useState([]);
+  const [products] = useProducts()
+
   const [currentPage, setCurrentPagination] = useState(1);
   const pageProduct = 3;
 
-  const handleBuy = (selectedProduct) => {
+  const handleCart = (selectedProduct) => {
     const newProduct = { ...selectedProduct };
     addToCart(newProduct);
   };
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/product");
-        const updatedProducts = await Promise.all(
-          response.data.map(async (product) => {
-            const image = product.image;
-            const imageUrl = await getImage(image);
-            product.amount = 1;
-            return { ...product, images: imageUrl };
-          })
-        );
-        setProducts(updatedProducts);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchProduct();
-  }, [currentPage]);
 
   return (
     <div className="flex flex-wrap">
@@ -67,7 +45,7 @@ const CardProduct = () => {
               </Link>
               <button
                 className="btn btn-primary"
-                onClick={() => handleBuy(product)}
+                onClick={() => handleCart(product)}
               >
                 Comprar
               </button>

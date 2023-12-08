@@ -12,13 +12,43 @@ export default function Login({ onClose }) {
 	const navigate = useNavigate();
 	const { setAuth } = useAuth();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 	const onChange = (e) => {
 		setForm({ ...form, [e.target.name]: e.target.value });
 	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		let res
+		let res;
 		try {
 			res = await login(form);
 			navigate("/", { replace: true });
@@ -26,11 +56,7 @@ export default function Login({ onClose }) {
 			window.localStorage.setItem("token", res.accessToken);
 			window.localStorage.setItem("user", JSON.stringify(res.userData));
 		} catch (err) {
-			if (res.statusCode === 401) {
-				alert('campos malos')
-			}
-		} finally{
-			console.log(res)
+			alert(err.message);
 		}
 	};
 
