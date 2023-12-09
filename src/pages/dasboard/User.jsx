@@ -4,7 +4,7 @@ import Button from "../../components/Button";
 
 export function User({userData}) {
     return (
-        <form onSubmit={() => {}} className="text-white">
+        <form onSubmit={() => {}} className="text-white align-item-center">
             <Input {...INPUTS_USER.name} />
             <Input {...INPUTS_USER.lastName} />
             <Input {...INPUTS_USER.email} />

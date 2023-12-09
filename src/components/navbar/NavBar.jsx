@@ -8,7 +8,7 @@ import LayoutAsk from "./../../components/LayoutAsk";
 import { IconCart, IconUser } from "../IconHero";
 // Fetch Category
 import { getCategoryName } from "../../api/category.api";
-
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
     // Renderizar Offcanvas
@@ -29,9 +29,10 @@ const NavBar = () => {
     };
 
     useEffect(() => {
-        setCheckRegister((prevTitle) => prevTitle === "Register" ? "Register" : "Login");
+        setCheckRegister((prevTitle) =>
+            prevTitle === "Register" ? "Register" : "Login"
+        );
     }, []);
-    
 
     // useEffect(() => {
     //     const fetchCategory = async () => {
@@ -40,20 +41,61 @@ const NavBar = () => {
     //     fetchCategory();
     // },[]);
 
-
-
     return (
         <div className="navbar bg-neutral">
-            <div className="flex-1">
-                <a className="ps-5 text-xl">
+            <div className="flex-1 justify-between">
+                <Link to="/" className="ps-5 text-xl ">
                     <img
                         src={Logo}
                         alt="logo animarte"
-                        className="nav-logo w-[60px] bg-white rounded-[50%]"
+                        className="nav-logo w-[60px] bg-white rounded-[50%] hidden sm:block"
                     />
-                </a>
+                </Link>
+
+                <div className="flex gap-3">
+                    <div className="flex items-center justify-end gap-3 pr-5">
+                        <Link className="text-white font-semibold" to="/">
+                            Inicio
+                        </Link>
+                        <details className="dropdown dropdown-center">
+                            <summary className=" text-white font-semibold">Productos</summary>
+                            <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                                {/* {renderCategory.map((category, index) => (
+                            <li key={index}>{category.category}</li>
+                        ))} */}
+                            </ul>
+                        </details>
+                    </div>
+
+                    <div className="flex gap-3">
+                        <button onClick={handleCart}>
+                            {<IconCart />}
+                            {cartOffcanvasShow && (
+                                <OffCanvas
+                                    offcanvasTitle={"Carrito de Compras"}
+                                    offcanvasContent={<CartOffCanvas />}
+                                    onClose={closeCart}
+                                    showButton={true}
+                                />
+                            )}
+                        </button>
+                        <button onClick={handleUser}>
+                            {<IconUser />}
+
+                            {userOffcanvasShow && (
+                                <OffCanvas
+                                    offcanvasTitle={checkRegister}
+                                    offcanvasContent={
+                                        <LayoutAsk onClose={closeCart} />
+                                    }
+                                    onClose={closeCart}
+                                />
+                            )}
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div className="flex-none">
+            {/* <div className="flex-none">
                 <div className="dropdown dropdown-end flex gap-3">
                     <button onClick={handleCart}>
                         {<IconCart />}
@@ -67,13 +109,11 @@ const NavBar = () => {
                         )}
                     </button>
                     <button onClick={handleUser}>
-                        {< IconUser />}
+                        {<IconUser />}
 
                         {userOffcanvasShow && (
                             <OffCanvas
-                                offcanvasTitle={
-                                    checkRegister
-                                }
+                                offcanvasTitle={checkRegister}
                                 offcanvasContent={
                                     <LayoutAsk onClose={closeCart} />
                                 }
@@ -81,17 +121,8 @@ const NavBar = () => {
                             />
                         )}
                     </button>
-                    {/* Categorias de Productos */}
-                    {/* <details className="dropdown">
-                        <summary className="m-1 btn">open or close</summary>
-                        <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                            {renderCategory.map((category, index) => (
-                                <li key={index}>{category.category}</li>
-                            ))}
-                        </ul>
-                    </details> */}
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

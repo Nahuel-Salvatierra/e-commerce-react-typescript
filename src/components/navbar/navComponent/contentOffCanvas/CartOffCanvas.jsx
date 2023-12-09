@@ -7,7 +7,7 @@ const CartOffCanvas = () => {
 	return (
 		<div>
 			{cartItems.map((item, index) => (
-				<div className="flex bg-neutral w-full p-2 mb-4" key={index}>
+				<div className="flex border rounded-lg w-full p-2 mb-4" key={index}>
 					<div className="flex-shrink-0">
 						<img
 							className="object-cover h-48 w-50"

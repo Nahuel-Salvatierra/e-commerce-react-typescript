@@ -14,39 +14,6 @@ export default function Login({ onClose }) {
     const [form, setForm] = useState("");
     const navigate = useNavigate();
     const { setAuth } = useAuth();
-
-    const onChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	
 	const onChange = (e) => {
 		setForm({ ...form, [e.target.name]: e.target.value });

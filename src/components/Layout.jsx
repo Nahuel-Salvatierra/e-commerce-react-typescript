@@ -6,7 +6,7 @@ import CardProduct from "./cards/CardProduct"
 export default function Layout() {
 
 	return (
-		<div className="bg-primary">
+		<div className="bg-gray-100">
 			<header>
 				<NavBar/>
 			</header>

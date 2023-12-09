@@ -9,8 +9,6 @@ const Home = () => {
 		<div>
 			<div className="container mx-auto flex flex-wrap">
 				<CardProduct/>
-				<Link to='/dashboard'>asdf</Link>
-				<Link to='/dashboard'>asdf</Link>
 			</div>
 		</div>
 	);
