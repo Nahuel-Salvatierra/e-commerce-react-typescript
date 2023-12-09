@@ -11,27 +11,29 @@ import Alerts from "../Alerts";
 
 export default function Login({ onClose }) {
     const notify = () => toast("Campos incorrectos");
-    const [form, setForm] = useState("");
+    const [form, setForm] = useState();
     const navigate = useNavigate();
     const { setAuth } = useAuth();
-	
-	const onChange = (e) => {
-		setForm({ ...form, [e.target.name]: e.target.value });
-	};
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		let res;
-		try {
-			res = await login(form);
-			navigate("/", { replace: true });
-			setAuth({ user: res.userData, token: res.accessToken });
-			window.localStorage.setItem("token", res.accessToken);
-			window.localStorage.setItem("user", JSON.stringify(res.userData));
-		} catch (err) {
-			alert(err.message);
-		}
-	};
+    const onChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let res;
+        try {
+            res = await login(form);
+            navigate("/", { replace: true });
+            setAuth({ user: res.userData, token: res.accessToken });
+            window.localStorage.setItem("token", res.accessToken);
+            window.localStorage.setItem("user", JSON.stringify(res.userData));
+            setTimeout(onClose, 2000)
+            toast.success("Login exitoso");
+        } catch (err) {
+            toast.error(err.message);
+        }
+    };
 
     return (
         <div>

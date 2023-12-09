@@ -1,4 +1,5 @@
 import axios from "./axios.config";
+import { AxiosError } from "axios";
 
 export async function signUp(data) {
     const dataSend = JSON.stringify(data);
@@ -15,22 +16,21 @@ export async function signUp(data) {
 }
 
 export async function login(data) {
-	const dataSend = JSON.stringify(data);
-	let res;
-	let response;
-	try {
-		res = await axios.post("/auth/login", dataSend, {
-			headers: { "Content-Type": "application/json" },
-		});
-		response = {
-			accessToken: res.data.accessToken,
-			userData: res.data.user,
-			status: res.status,
-			statusCode: res.response.data.statusCode,
-		};
-		return response;
-	} catch (error) {
-		if (error instanceof AxiosError) throw new Error(error.message);
-    throw new Error('Unexpected login error')
-	}
+    let res;
+    let response;
+    try {
+        res = await axios.post("/auth/login", data, {
+            headers: { "Content-Type": "application/json" },
+        });
+        response = {
+            accessToken: res.data.accessToken,
+            userData: res.data.user,
+            status: res.status,
+        };
+        return response; 
+    } catch (error) {
+        if (error.response?.status === 401) throw new Error('Correo o contraseña incorrectos')
+        if (error instanceof AxiosError) throw new Error(error.message);
+        throw new Error("Unexpected login error");
+    }
 }
