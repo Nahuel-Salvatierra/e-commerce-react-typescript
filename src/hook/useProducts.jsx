@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "../api/axios.config";
-import { getImage } from "../api/product.api";
+import { getImage, getProducts } from "../api/product.api";
 
 export function useProducts (){
   const [products, setProducts] = useState([]);
@@ -8,9 +8,9 @@ export function useProducts (){
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get("/product");
+        const response = await getProducts();
         const updatedProducts = await Promise.all(
-          response.data.map(async (product) => {
+          response.map(async (product) => {
             const image = product.image;
             const imageUrl = await getImage(image);
             product.amount = 1;
