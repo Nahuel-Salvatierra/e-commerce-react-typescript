@@ -10,7 +10,7 @@ export async function createCategory(data) {
 export async function getCategoryName() {
     try {
         const res = await axios.get("/category");
-        const categoryName = res.data.map(category = category.title)
+        const categoryName = res.data.map(category => category.name)
         return categoryName;
     } catch (error) {
         throw error

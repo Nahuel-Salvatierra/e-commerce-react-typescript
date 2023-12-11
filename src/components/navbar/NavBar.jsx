@@ -56,9 +56,9 @@ const NavBar = () => {
                             <summary className=" text-white font-semibold">
                                 Productos
                             </summary>
-                            <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                            <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-48">
                                 {categoryName.map((category, index) => (
-                                    <li key={index}>{category.title}</li>
+                                    <li key={index}>{category}</li>
                                 ))}
                             </ul>
                         </details>
