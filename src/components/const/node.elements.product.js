@@ -33,9 +33,9 @@ export const INPUTS_PRODUCT = {
 
 
 export const INPUTS_CATEGORY = {
-  title: {
+  name: {
       id: 1,
-      name: 'category',
+      name: 'name',
       type: 'text',
       label: 'Category',
   },

@@ -12,7 +12,6 @@ const Dashboard = () => {
     useEffect(() => {
         const getUser = async () => {
             const res = await getUserById(auth.user.userId);
-            console.log(res);
             if (res.status == 200) {
                 delete res.status;
                 setUser(res);

@@ -22,7 +22,7 @@ const CartOffCanvas = () => {
 						<div>
 							<p className="text-lg font-bold">
 								{" "}
-								${item.price * item.amount}{" "}
+								${item.category.price * item.amount}{" "}
 							</p>
 						</div>
 						<div>

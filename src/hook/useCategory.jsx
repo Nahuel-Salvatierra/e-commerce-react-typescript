@@ -10,7 +10,6 @@ export function useCategory (){
         const response = await getCategoryName();
         setCategory(response);
       } catch (error) {
-        console.error(error);
       }
     };
     fetchCategory();

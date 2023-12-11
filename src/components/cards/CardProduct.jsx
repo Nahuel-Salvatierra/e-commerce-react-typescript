@@ -36,10 +36,10 @@ const CardProduct = () => {
                     </figure>
                     <div className="card-body">
                         <h2 className="card-title"> {product.title} </h2>
-                        <p> {product.category} </p>
+                        <p> {product.category.name} </p>
                         <p> {product.description} </p>
                         <div className="card-actions justify-between items-center">
-                            <p> {product.price} </p>
+                            <p> {product.category.price} </p>
                         </div>
                         <div>
                             <Link to={`${product.id}`}>
