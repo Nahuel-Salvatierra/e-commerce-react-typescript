@@ -7,7 +7,7 @@ import LayoutAsk from "./../../components/LayoutAsk";
 // Iconos
 import { IconCart, IconUser } from "../IconHero";
 // Fetch Category
-import { getCategoryName } from "../../api/category.api";
+import { useCategory } from "../../hook/useCategory";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
@@ -16,6 +16,8 @@ const NavBar = () => {
     const [userOffcanvasShow, setUserOffcanvasShow] = useState(false);
     //Alternar nombre de titulo OffCanvas
     const [checkRegister, setCheckRegister] = useState("Register");
+    // Category
+    const [categoryName] = useCategory();
 
     const handleCart = () => {
         setCartOffcanvasShow(true);
@@ -34,13 +36,6 @@ const NavBar = () => {
         );
     }, []);
 
-    // useEffect(() => {
-    //     const fetchCategory = async () => {
-    //         await getCategoryName();
-    //     }
-    //     fetchCategory();
-    // },[]);
-
     return (
         <div className="navbar bg-neutral">
             <div className="flex-1 justify-between">
@@ -58,11 +53,13 @@ const NavBar = () => {
                             Inicio
                         </Link>
                         <details className="dropdown dropdown-center">
-                            <summary className=" text-white font-semibold">Productos</summary>
+                            <summary className=" text-white font-semibold">
+                                Productos
+                            </summary>
                             <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                                {/* {renderCategory.map((category, index) => (
-                            <li key={index}>{category.category}</li>
-                        ))} */}
+                                {categoryName.map((category, index) => (
+                                    <li key={index}>{category.title}</li>
+                                ))}
                             </ul>
                         </details>
                     </div>

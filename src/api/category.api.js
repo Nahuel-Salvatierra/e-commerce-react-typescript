@@ -1,20 +1,18 @@
 import axios from "./axios.config";
 
 export async function createCategory(data) {
-    try {
-        const response = await axios.post("http://localhost:3000/category",data);
-        return response.status
-    } catch (error) {
-        throw error
-    }
+    const res = await axios.post("/category", data, {
+        headers: { "Content-Type": "application/json" }
+    });
+    return res
 }
 
 export async function getCategoryName() {
     try {
-        const response = await axios.get("http://localhost:3000/category");
-        const categoryName = response.data.map(category = category.name)
+        const res = await axios.get("/category");
+        const categoryName = res.data.map(category = category.title)
         return categoryName;
     } catch (error) {
-      throw error
+        throw error
     }
 }

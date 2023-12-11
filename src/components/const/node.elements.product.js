@@ -30,3 +30,19 @@ export const INPUTS_PRODUCT = {
     label: 'Precio',
   }
 }
+
+
+export const INPUTS_CATEGORY = {
+  title: {
+      id: 1,
+      name: 'category',
+      type: 'text',
+      label: 'Category',
+  },
+  price: {
+      id: 2,
+      name: 'price',
+      type: 'number',
+      label: 'Precio',
+  }
+}
