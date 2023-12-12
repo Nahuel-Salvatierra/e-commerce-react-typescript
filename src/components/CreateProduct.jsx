@@ -40,7 +40,6 @@ export default function CreateProduct() {
         });
     };
 
-    // Category
     const handleSubmitCategory = async (event) => {
         event.preventDefault();
         const category = new FormData(event.target);

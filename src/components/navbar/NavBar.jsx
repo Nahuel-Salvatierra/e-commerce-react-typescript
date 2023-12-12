@@ -30,6 +30,10 @@ const NavBar = () => {
         setUserOffcanvasShow(false);
     };
 
+    const handleCategoryNav = () => {
+        
+    }
+
     useEffect(() => {
         setCheckRegister((prevTitle) =>
             prevTitle === "Register" ? "Register" : "Login"
@@ -37,8 +41,8 @@ const NavBar = () => {
     }, []);
 
     return (
-        <div className="navbar bg-neutral">
-            <div className="flex-1 justify-between">
+        <div className="navbar bg-neutral sm:px-56 px-8">
+            <div className="flex-1 sm:justify-between justify-center">
                 <Link to="/" className="ps-5 text-xl ">
                     <img
                         src={Logo}
@@ -56,9 +60,9 @@ const NavBar = () => {
                             <summary className=" text-white font-semibold">
                                 Productos
                             </summary>
-                            <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-48">
+                            <ul className="bg-base-100 p-2 shadow menu dropdown-content z-[1] rounded-box w-48">
                                 {categoryName.map((category, index) => (
-                                    <li key={index}>{category}</li>
+                                    <li key={index} className="px-1 hover:bg-neutral hover:text-white hover:rounded hover:cursor-pointer" onClick={handleCategoryNav}>{category}</li>
                                 ))}
                             </ul>
                         </details>
@@ -66,7 +70,8 @@ const NavBar = () => {
 
                     <div className="flex gap-3">
                         <button onClick={handleCart}>
-                            {<IconCart />}
+                            {<IconCart className={'w-10 h-10 text-white hover:bg-white hover:text-black rounded-full p-1'}/>}
+
                             {cartOffcanvasShow && (
                                 <OffCanvas
                                     offcanvasTitle={"Carrito de Compras"}
@@ -77,7 +82,7 @@ const NavBar = () => {
                             )}
                         </button>
                         <button onClick={handleUser}>
-                            {<IconUser />}
+                            {<IconUser className={'w-10 h-10 text-white hover:bg-white hover:text-black rounded-full p-1'}/>}
 
                             {userOffcanvasShow && (
                                 <OffCanvas
@@ -92,34 +97,6 @@ const NavBar = () => {
                     </div>
                 </div>
             </div>
-            {/* <div className="flex-none">
-                <div className="dropdown dropdown-end flex gap-3">
-                    <button onClick={handleCart}>
-                        {<IconCart />}
-                        {cartOffcanvasShow && (
-                            <OffCanvas
-                                offcanvasTitle={"Carrito de Compras"}
-                                offcanvasContent={<CartOffCanvas />}
-                                onClose={closeCart}
-                                showButton={true}
-                            />
-                        )}
-                    </button>
-                    <button onClick={handleUser}>
-                        {<IconUser />}
-
-                        {userOffcanvasShow && (
-                            <OffCanvas
-                                offcanvasTitle={checkRegister}
-                                offcanvasContent={
-                                    <LayoutAsk onClose={closeCart} />
-                                }
-                                onClose={closeCart}
-                            />
-                        )}
-                    </button>
-                </div>
-            </div> */}
         </div>
     );
 };

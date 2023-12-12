@@ -8,13 +8,15 @@ export default {
 
           "primary": "#1f2937",
 
-          "secondary": "fff",
+          "secondary": "#a588e3",
 
           "accent": "#111827",
 
-          "neutral": "#6d28d9",
+          "neutral": "#5811C7",
 
           "base-100": "#f2ffff",
+          
+          "base-200": "#000", //Funciona para agregar otro color
 
           "info": "#3b82f6",
 

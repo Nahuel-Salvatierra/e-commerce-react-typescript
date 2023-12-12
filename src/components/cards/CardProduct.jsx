@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 // import axios from "./../../api/axios.config.js";
 // import { getProducts, getImage } from "./../../api/product.api";
 import { useProducts } from "./../../hook/useProducts.jsx";
+import Button from "../Button.jsx";
 
 const CardProduct = () => {
     const { addToCart } = useCart();
@@ -19,13 +20,12 @@ const CardProduct = () => {
     };
 
     return (
-        <div className="flex flex-wrap gap-5 justify-center">
+        <div className="flex flex-wrap gap-5 justify-center p-7">
             {products.map((product) => (
                 <div
                     key={product.id}
-                    className="card w-80 bg-base-100 shadow-xl border p-3 pb-10"
+                    className="card w-80 bg-slate-50 shadow-xl border p-7 pb-10"
                 >
-                    {/* <Link to={`${product.id}`}> */}
                     <figure>
                         <img
                             src={product.images}
@@ -34,25 +34,22 @@ const CardProduct = () => {
                             width={500}
                         />
                     </figure>
-                    <div className="card-body">
+                    <div className="card-body p-0 pt-2">
                         <h2 className="card-title"> {product.title} </h2>
                         <p> {product.category.name} </p>
                         <p> {product.description} </p>
                         <div className="card-actions justify-between items-center">
                             <p> {product.category.price} </p>
                         </div>
-                        <div>
+                        <div className="flex justify-between">
                             <Link to={`${product.id}`}>
-                                <button className="btn btn-primary">
-                                    Ver Detalles
-                                </button>
+                                <Button text='Ver Detalles' style='text-black bg-inherit hover:text-white hover:bg-neutral' />
                             </Link>
-                            <button
-                                className="btn btn-primary"
+                            <Button
                                 onClick={() => handleCart(product)}
-                            >
-                                Comprar
-                            </button>
+                                text='Comprar'
+                                style='text-white border none hover:bg-neutral'
+                                />
                         </div>
                     </div>
                     {/* </Link> */}

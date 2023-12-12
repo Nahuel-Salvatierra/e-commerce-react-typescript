@@ -28,7 +28,6 @@ const OffCanvas = ({
     const message = `Hola, quiero comprar ${messageName}`
     const whatsappMessage = encodeURIComponent(message)
     const numberPhoneWhatsApp = import.meta.env.VITE_NUMBER_PHONE
-    
     const whatsappLink = `https://wa.me/${numberPhoneWhatsApp}?text=${whatsappMessage}`
     window.open(whatsappLink, '_blank')
   }
