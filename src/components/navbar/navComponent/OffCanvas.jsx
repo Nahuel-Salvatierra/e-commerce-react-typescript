@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import useCart from "./../../../hook/useCart";
+import { useProducts } from "../../../hook/useProducts";
 
 const OffCanvas = ({
   onClose,
@@ -12,10 +13,27 @@ const OffCanvas = ({
   const [open, setOpen] = useState(true);
   const { cartItems } = useCart();
 
+  // Cerrar OffCanvas
   const handleOnClose = () => {
     setOpen(false);
     onClose();
   };
+
+  // Validar Boton
+  const onClickValidation = cartItems.find(object => object.id)
+
+  // Boton Comprar
+  const handleBuy = () => {
+    const messageName = `${cartItems.map((product) => ` el producto ${product.title}, Cantidad: ${product.amount}`).join(', ')}`;
+    const message = `Hola, quiero comprar ${messageName}`
+    const whatsappMessage = encodeURIComponent(message)
+    const numberPhoneWhatsApp = import.meta.env.VITE_NUMBER_PHONE
+    
+    const whatsappLink = `https://wa.me/${numberPhoneWhatsApp}?text=${whatsappMessage}`
+    window.open(whatsappLink, '_blank')
+  }
+
+
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -82,8 +100,8 @@ const OffCanvas = ({
                     </div>
                     {showButton && (
                       <div className="flex justify-center">
-                        <button className="btn btn-neutral w-96">
-                          {cartItems.find(object => object.id)
+                        <button className={`btn btn-neutral w-96`} disabled={onClickValidation ? false : true} onClick={onClickValidation ? handleBuy : undefined} >
+                          {onClickValidation
                             ? "Comprar"
                             : "Carrito de compra vació"}
                         </button>
