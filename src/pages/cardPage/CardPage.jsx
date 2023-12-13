@@ -10,15 +10,15 @@ const CardPage = ({ product }) => {
     };
 
     return (
-        <div className="container mx-auto flex justify-center gap-2 py-12 px-24">
-            <div className="w-1/2">
+        <div className="container mx-auto lg:flex justify-center gap-2 py-12 lg:px-24">
+            <div className="w-full p-3 lg:1/2">
                 <img
                     src={product.images}
                     alt={product.title + " image"}
-                    className="w-[500] h-[90%] object-contain"
+                    className="w-full rounded-xl object-contain"
                 />
             </div>
-            <div className="w-1/2">
+            <div className="w-full p-3 lg:1/2 flex flex-col justify-between">
                 {/* Titulo */}
                 <div className="border-b border-gray-600">
                     <h1 className="text-3xl pb-2">
@@ -41,9 +41,10 @@ const CardPage = ({ product }) => {
                         {<IconTruck />} Envio a todo el país
                     </p>
                 </div>
+                <br />
                 {/* Agregar carrito */}
                 <button
-                    className="btn bg-secondary text-white border-none hover:btn-neutral w-80 mt-5"
+                    className="btn bg-secondary text-white border-none text-center hover:btn-neutral  w-full "
                     onClick={() => handleBuy(product)}
                 >
                     {<IconCart className={"w-6 h-6"} />} Agregar al carrito

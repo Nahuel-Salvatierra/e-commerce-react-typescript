@@ -61,7 +61,7 @@ export default function CreateProduct() {
     };
 
     return (
-        <div className="container flex mx-auto my-10 justify-center">
+        <div className="container flex mx-auto py-10 justify-center">
             <div className="w-1/2 flex justify-center">
                 <form
                     onSubmit={handleSubmit}
@@ -70,6 +70,7 @@ export default function CreateProduct() {
                 >
                     <div className="p-10">
                         <Input {...INPUTS_PRODUCT.title} onChange={onChange} />{" "}
+                        <br />
                         <br />
                         <Dropdown
                             {...INPUTS_PRODUCT.category}
@@ -82,9 +83,10 @@ export default function CreateProduct() {
                             onChange={onChange}
                         />
                         <br />
+                        <br />
                         <Input {...INPUTS_PRODUCT.image} onChange={onChange} />
                         <br />
-                        <Button type={"submit"} text={"Save"} />
+                        <Button type={"submit"} text={"Guardar"} style={'text-white'}/>
                     </div>
                 </form>
             </div>
@@ -100,12 +102,14 @@ export default function CreateProduct() {
                             onChange={onChangeCategory}
                         />{" "}
                         <br />
+                        <br />
                         <Input
                             {...INPUTS_CATEGORY.price}
                             onChange={onChangeCategory}
                         />
                         <br />
-                        <Button type={"submit"} text={"Save"} />
+                        <br />
+                        <Button type={"submit"} text={"Guardar"} style={'text-white'}/>
                     </div>
                 </form>
             </div>

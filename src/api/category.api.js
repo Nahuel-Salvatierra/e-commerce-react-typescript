@@ -16,3 +16,12 @@ export async function getCategoryName() {
         throw error
     }
 }
+
+// export async function getRenderCategory(name) {
+//     try {
+//         const res = await axios.get(`product/category/${name}`)
+//         return res.name
+//     } catch (error) {
+//         throw error
+//     }
+// }

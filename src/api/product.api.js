@@ -16,6 +16,16 @@ export const getProducts = async ()=>{
 	}
 };
 
+export const getProductsFiltered= async (name)=>{
+	try {
+		const res = await axios.get(`/product/category/${name}`);
+        
+		return res.data;
+	} catch (error) {
+		throw new Error(error.message);
+	}
+}
+
 export const getImage = async (img) => {
     try {
         const response = await axios.get(`/product/image/${img}`, {

@@ -11,6 +11,9 @@ const CardProduct = () => {
     const { addToCart } = useCart();
     const [products] = useProducts()
   
+    useEffect(()=>{
+        console.log(products)
+    },[products])
     // const [currentPage, setCurrentPagination] = useState(1);
     // const pageProduct = 3;
   

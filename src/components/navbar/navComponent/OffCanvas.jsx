@@ -24,7 +24,7 @@ const OffCanvas = ({
 
   // Boton Comprar
   const handleBuy = () => {
-    const messageName = `${cartItems.map((product) => ` el producto ${product.title}, Cantidad: ${product.amount}`).join(', ')}`;
+    const messageName = `${cartItems.map((product) => ` El producto ${product.title}, Cantidad: ${product.amount}`).join('\n\n ')}`;
     const message = `Hola, quiero comprar ${messageName}`
     const whatsappMessage = encodeURIComponent(message)
     const numberPhoneWhatsApp = import.meta.env.VITE_NUMBER_PHONE

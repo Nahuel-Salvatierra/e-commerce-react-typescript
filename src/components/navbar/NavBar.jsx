@@ -9,6 +9,8 @@ import { IconCart, IconUser } from "../IconHero";
 // Fetch Category
 import { useCategory } from "../../hook/useCategory";
 import { Link } from "react-router-dom";
+import { getProductsFiltered } from "../../api/product.api";
+import { useProducts } from "../../hook/useProducts";
 
 const NavBar = () => {
     // Renderizar Offcanvas
@@ -18,6 +20,8 @@ const NavBar = () => {
     const [checkRegister, setCheckRegister] = useState("Register");
     // Category
     const [categoryName] = useCategory();
+
+    const [products, setProducts, filterProducts] = useProducts()
 
     const handleCart = () => {
         setCartOffcanvasShow(true);
@@ -30,8 +34,10 @@ const NavBar = () => {
         setUserOffcanvasShow(false);
     };
 
-    const handleCategoryNav = () => {
-        
+    const handleCategoryNav = async (e) => {
+        const category = e.target.textContent
+        const productsFilter = await getProductsFiltered(category)
+        filterProducts(productsFilter)
     }
 
     useEffect(() => {
@@ -51,6 +57,7 @@ const NavBar = () => {
                     />
                 </Link>
 
+
                 <div className="flex gap-3">
                     <div className="flex items-center justify-end gap-3 pr-5">
                         <Link className="text-white font-semibold" to="/">
@@ -62,7 +69,7 @@ const NavBar = () => {
                             </summary>
                             <ul className="bg-base-100 p-2 shadow menu dropdown-content z-[1] rounded-box w-48">
                                 {categoryName.map((category, index) => (
-                                    <li key={index} className="px-1 hover:bg-neutral hover:text-white hover:rounded hover:cursor-pointer" onClick={handleCategoryNav}>{category}</li>
+                                    <li key={index} name={category} className="px-1 hover:bg-neutral hover:text-white hover:rounded hover:cursor-pointer" onClick={handleCategoryNav}>{category}</li>
                                 ))}
                             </ul>
                         </details>
