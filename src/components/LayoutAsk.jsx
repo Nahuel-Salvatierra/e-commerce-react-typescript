@@ -16,7 +16,7 @@ function LayoutAsk( {onClose} ) {
   return (
     <div>
       {compRegistrarse ? compRegistrarse == auth?.user? (<LogOut />) : <Register onClose={onClose}/> : <Login onClose={onClose} /> }
-      <p className="">
+      <p className="" id='askRegister'>
         {compRegistrarse ? "¿Tienes una cuenta?" : "¿No tienes una cuenta?"}{" "}
         <a href="#" onClick={toggleRegistrarse} className="text-blue-600">
           {compRegistrarse ? "Inicia sesión aquí.": "Regístrate aquí."}

@@ -76,7 +76,7 @@ const NavBar = () => {
                     </div>
 
                     <div className="flex gap-3">
-                        <button onClick={handleCart}>
+                        <button id='buyIcon' onClick={handleCart}>
                             {<IconCart className={'w-10 h-10 text-white hover:bg-white hover:text-black rounded-full p-1'}/>}
 
                             {cartOffcanvasShow && (
@@ -88,7 +88,7 @@ const NavBar = () => {
                                 />
                             )}
                         </button>
-                        <button onClick={handleUser}>
+                        <button id='userIcon' onClick={handleUser}>
                             {<IconUser className={'w-10 h-10 text-white hover:bg-white hover:text-black rounded-full p-1'}/>}
 
                             {userOffcanvasShow && (

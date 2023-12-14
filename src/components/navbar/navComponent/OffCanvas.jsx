@@ -99,7 +99,7 @@ const OffCanvas = ({
                     </div>
                     {showButton && (
                       <div className="flex justify-center">
-                        <button className={`btn btn-neutral w-96`} disabled={onClickValidation ? false : true} onClick={onClickValidation ? handleBuy : undefined} >
+                        <button id='finishBuy' className={`btn btn-neutral w-96`} disabled={onClickValidation ? false : true} onClick={onClickValidation ? handleBuy : undefined} >
                           {onClickValidation
                             ? "Comprar"
                             : "Carrito de compra vació"}
