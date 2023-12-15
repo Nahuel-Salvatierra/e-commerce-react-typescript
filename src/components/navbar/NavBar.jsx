@@ -15,6 +15,7 @@ import { getProductsFiltered } from "../../api/product.api";
 import { useTitleAuth } from "../../hook/useCart";
 import { useProductContext } from "../../hook/useProducts";
 import { getImage } from "../../api/product.api";
+import Modal from "../Modal";
 
 const NavBar = () => {
     // Renderizar Offcanvas
@@ -108,7 +109,7 @@ const NavBar = () => {
                             </ul>
                         </details>
                     </div>
-
+                                    <Modal/>
                     <div className="flex gap-3">
                         <div className="flex justify-center text-white">
                             <button onClick={handleBodyStyle}>

@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import { useProductContext } from "./../../hook/useProducts.jsx";
 import Button from "../Button.jsx";
 
-const CardProduct = () => {
+const CardProduct = ({handleProductNavigate}) => {
     const { addToCart } = useCart();
     const { product } = useProductContext();
     let array
     if (product) {
         array = Object.values(product);
     }
-console.log(product)
+
     const handleCart = (selectedProduct) => {
         const newProduct = { ...selectedProduct };
         addToCart(newProduct);
@@ -41,7 +41,7 @@ console.log(product)
                             <p> {product.category.price} </p>
                         </div>
                         <div className="flex justify-between">
-                            <Link to={`${product.id}`}>
+                            <Link to={`/${product.id}`} onClick={handleProductNavigate}>
                                 <Button
                                     text="Ver Detalles"
                                     style="text-black bg-inherit hover:text-white hover:bg-neutral"
