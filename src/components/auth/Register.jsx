@@ -5,51 +5,55 @@ import Button from "../Button";
 import { signUp } from "../../api/auth.api";
 import { useNavigate } from "react-router-dom";
 
-export default function Register( {onClose} ) {
-  const [form, setForm] = useState({
-    name: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+export default function Register({ onClose }) {
+    const [form, setForm] = useState({
+        name: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+    });
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    INPUTS_REGISTER.confirmPassword.pattern = form.password;
-  }, [form.password]);
+    useEffect(() => {
+        INPUTS_REGISTER.confirmPassword.pattern = form.password;
+    }, [form.password]);
 
-  const onChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+    const onChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    delete form.confirmPassword;
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        delete form.confirmPassword;
 
-    try {
-      const { res } = await signUp(form);
-      onClose()
-      if (res.status === 201) navigate("/", { replace: true });
-    } catch (error) {
-      console.log(error);   
-    }
-  };
+        try {
+            const { res } = await signUp(form);
+            onClose();
+            if (res.status === 201) navigate("/", { replace: true });
+        } catch (error) {
+            throw error;
+        }
+    };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <Input {...INPUTS_REGISTER.name} onChange={onChange} />
+    return (
+        <form onSubmit={handleSubmit}>
+            <Input {...INPUTS_REGISTER.name} onChange={onChange} />
 
-      <Input {...INPUTS_REGISTER.lastName} onChange={onChange} />
+            <Input {...INPUTS_REGISTER.lastName} onChange={onChange} />
 
-      <Input {...INPUTS_REGISTER.email} onChange={onChange} />
+            <Input {...INPUTS_REGISTER.email} onChange={onChange} />
 
-      <Input {...INPUTS_REGISTER.password} onChange={onChange} />
+            <Input {...INPUTS_REGISTER.password} onChange={onChange} />
 
-      <Input {...INPUTS_REGISTER.confirmPassword} onChange={onChange} />
+            <Input {...INPUTS_REGISTER.confirmPassword} onChange={onChange} />
 
-      <Button text={"Register"} type={"submit"} style={"w-80 btn-neutral"} />
-    </form>
-  );
+            <Button
+                text={"Register"}
+                type={"submit"}
+                style={"w-80 btn-neutral"}
+            />
+        </form>
+    );
 }

@@ -17,7 +17,7 @@ export default function CreateProduct() {
         image: "",
     });
 
-    const [category] = useCategory()
+    const [category] = useCategory();
 
     const [categoryForm, setCategoryForm] = useState({ name: "", price: "" });
 
@@ -49,7 +49,7 @@ export default function CreateProduct() {
                 categoryForm[value] = "";
             }
         } catch (error) {
-            console.log(error);
+            throw error;
         }
     };
 
@@ -86,7 +86,11 @@ export default function CreateProduct() {
                         <br />
                         <Input {...INPUTS_PRODUCT.image} onChange={onChange} />
                         <br />
-                        <Button type={"submit"} text={"Guardar"} style={'text-white'}/>
+                        <Button
+                            type={"submit"}
+                            text={"Guardar"}
+                            style={"text-white"}
+                        />
                     </div>
                 </form>
             </div>
@@ -109,7 +113,11 @@ export default function CreateProduct() {
                         />
                         <br />
                         <br />
-                        <Button type={"submit"} text={"Guardar"} style={'text-white'}/>
+                        <Button
+                            type={"submit"}
+                            text={"Guardar"}
+                            style={"text-white"}
+                        />
                     </div>
                 </form>
             </div>

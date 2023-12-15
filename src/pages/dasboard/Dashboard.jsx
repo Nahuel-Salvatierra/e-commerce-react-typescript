@@ -3,6 +3,7 @@ import useAuth from "../../hook/useAuth";
 import { Admin, User } from "./index";
 import { getUserById } from "./../../api/user.api";
 import { IconArrowLeft } from "../../components/IconHero";
+import Button from "../../components/Button";
 
 const Dashboard = () => {
     const { auth } = useAuth();
@@ -29,7 +30,7 @@ const Dashboard = () => {
             <div>
                 <div>
                     <h2>Detalles del Usuario</h2>
-                    <button onClick={handleEdit} > {edit ? "Editar" :  <div className="flex items-center"> <IconArrowLeft className={"className"} /> Volver </div> } </button>
+                    <button className="btn border-0 bg-neutral text-white hover:bg-green-700" onClick={handleEdit} > {edit ? "Editar" :  <div className="flex items-center"> <IconArrowLeft className={"h-4 w-4"} /> &nbsp; Volver </div> } </button>
                 </div>
 
                 {edit 
