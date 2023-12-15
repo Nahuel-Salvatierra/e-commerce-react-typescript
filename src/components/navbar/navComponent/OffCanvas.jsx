@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useCart } from "./../../../hook/useCart";
+import Modal from "../../Modal";
 
 const OffCanvas = ({
     onClose,
@@ -21,20 +22,11 @@ const OffCanvas = ({
     // Validar Boton
     const onClickValidation = cartItems.find((object) => object.id);
 
-    // Boton Comprar
-    const handleBuy = () => {
-        const messageName = `${cartItems
-            .map(
-                (product) =>
-                    ` El producto ${product.title}, Cantidad: ${product.amount}`
-            )
-            .join("\n\n ")}`;
-        const message = `Hola, quiero comprar ${messageName}`;
-        const whatsappMessage = encodeURIComponent(message);
-        const numberPhoneWhatsApp = import.meta.env.VITE_NUMBER_PHONE;
-        const whatsappLink = `https://wa.me/${numberPhoneWhatsApp}?text=${whatsappMessage}`;
-        window.open(whatsappLink, "_blank");
+    const handleModal = () => {
+        document.getElementById("my_modal_2").showModal();
     };
+    // Boton Comprar
+
 
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -116,7 +108,7 @@ const OffCanvas = ({
                                                     }
                                                     onClick={
                                                         onClickValidation
-                                                            ? handleBuy
+                                                            ? handleModal
                                                             : undefined
                                                     }
                                                 >
