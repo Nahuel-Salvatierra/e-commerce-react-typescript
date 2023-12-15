@@ -1,5 +1,5 @@
 import React from "react";
-import useCart from "./../../hook/useCart";
+import {useCart} from "./../../hook/useCart";
 import { IconCart, IconTruck, IconShield, IconCheck } from "../../components/IconHero";
 
 const CardPage = ({ product }) => {

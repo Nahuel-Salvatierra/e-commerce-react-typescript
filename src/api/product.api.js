@@ -16,7 +16,7 @@ export const getProducts = async ()=>{
 	}
 };
 
-export const getProductsFiltered= async (name)=>{
+export const getProductsFiltered = async (name)=>{
 	try {
 		const res = await axios.get(`/product/category/${name}`);
         

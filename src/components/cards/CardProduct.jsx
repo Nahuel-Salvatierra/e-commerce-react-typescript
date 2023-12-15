@@ -1,30 +1,26 @@
 import React, { useState, useEffect } from "react";
-import useCart from "./../../hook/useCart";
+import { useCart } from "./../../hook/useCart";
 // Enrutado
 import { Link } from "react-router-dom";
-// import axios from "./../../api/axios.config.js";
-// import { getProducts, getImage } from "./../../api/product.api";
-import { useProducts } from "./../../hook/useProducts.jsx";
+import { useProductContext } from "./../../hook/useProducts.jsx";
 import Button from "../Button.jsx";
 
 const CardProduct = () => {
     const { addToCart } = useCart();
-    const [products] = useProducts()
-  
-    useEffect(()=>{
-        console.log(products)
-    },[products])
-    // const [currentPage, setCurrentPagination] = useState(1);
-    // const pageProduct = 3;
-  
+    const { product } = useProductContext();
+    let array
+    if (product) {
+        array = Object.values(product);
+    }
+console.log(product)
     const handleCart = (selectedProduct) => {
-      const newProduct = { ...selectedProduct };
-      addToCart(newProduct);
+        const newProduct = { ...selectedProduct };
+        addToCart(newProduct);
     };
 
     return (
         <div className="flex flex-wrap gap-5 justify-center p-7">
-            {products.map((product) => (
+            {array?.map((product) => (
                 <div
                     key={product.id}
                     className="card w-80 bg-slate-50 shadow-xl border p-7 pb-10"
@@ -46,13 +42,16 @@ const CardProduct = () => {
                         </div>
                         <div className="flex justify-between">
                             <Link to={`${product.id}`}>
-                                <Button text='Ver Detalles' style='text-black bg-inherit hover:text-white hover:bg-neutral' />
+                                <Button
+                                    text="Ver Detalles"
+                                    style="text-black bg-inherit hover:text-white hover:bg-neutral"
+                                />
                             </Link>
                             <Button
                                 onClick={() => handleCart(product)}
-                                text='Comprar'
-                                style='text-white border none hover:bg-neutral'
-                                />
+                                text="Comprar"
+                                style="text-white border none hover:bg-neutral"
+                            />
                         </div>
                     </div>
                     {/* </Link> */}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import useCart from "./../../../../hook/useCart";
+import {useCart} from "./../../../../hook/useCart";
 
 const CartOffCanvas = () => {
 	const { cartItems, removeFromCart, setCartItems, removeAmount, addAmount } = useCart();

@@ -1,8 +1,11 @@
 import { useContext, useState } from "react";
-import ProductContext from "../context/ProductProvider";
+import CartContext from "../context/CartProvider";
 
-const useCart = () => {
-  return useContext(ProductContext)
+export function useCart() {
+    return useContext(CartContext);
 }
 
-export default useCart;
+export function useTitleAuth() {
+    const [checkRegister, setCheckRegister] = useState(false);
+    return [checkRegister, setCheckRegister];
+}

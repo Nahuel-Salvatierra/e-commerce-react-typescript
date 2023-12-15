@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, uuse } from "react";
 // css
-import "../../App.css"
+import "../../App.css";
 // Imagenes
 import Logo from "../../assets/logo/animarte-logo.png";
 import OffCanvas from "./navComponent/OffCanvas";
@@ -12,18 +12,22 @@ import { IconCart, IconSun, IconUser, IconMoon } from "../IconHero";
 import { useCategory } from "../../hook/useCategory";
 import { Link } from "react-router-dom";
 import { getProductsFiltered } from "../../api/product.api";
-import { useProducts } from "../../hook/useProducts";
+import { useTitleAuth } from "../../hook/useCart";
+import { useProductContext } from "../../hook/useProducts";
+import { getImage } from "../../api/product.api";
 
 const NavBar = () => {
     // Renderizar Offcanvas
     const [cartOffcanvasShow, setCartOffcanvasShow] = useState(false);
     const [userOffcanvasShow, setUserOffcanvasShow] = useState(false);
     //Alternar nombre de titulo OffCanvas
-    const [checkRegister, setCheckRegister] = useState("Register");
+    const [checkRegister, setCheckRegister] = useTitleAuth();
+
     // Category
     const [categoryName] = useCategory();
     //renderCategory
-    const [products, setProducts, filterProducts] = useProducts();
+    const { products, setProducts, filterProducts, restore } =
+        useProductContext();
     //ThemeDark
     const [bodyStyle, setBodyStyle] = useState(true);
 
@@ -40,33 +44,34 @@ const NavBar = () => {
 
     const handleCategoryNav = async (e) => {
         const category = e.target.textContent;
-        const productsFilter = await getProductsFiltered(category);
-        filterProducts(productsFilter);
-    };
-
-    useEffect(() => {
-        setCheckRegister((prevTitle) =>
-            prevTitle === "Register" ? "Register" : "Login"
+        const response = await getProductsFiltered(category);
+        const updatedProducts = await Promise.all(
+            response.map(async (product) => {
+                const image = product.image;
+                const imageUrl = await getImage(image);
+                product.amount = 1;
+                return { ...product, images: imageUrl };
+            })
         );
-    }, []);
+        filterProducts(updatedProducts);
+    };
 
     const handleBodyStyle = () => {
-        setBodyStyle(((theme) => !theme));
+        setBodyStyle((theme) => !theme);
     };
 
     useEffect(() => {
-        const body = document.body;
         if (bodyStyle) {
-            layoutContainer.classList.toggle("theme-dark")
+            layoutContainer.classList.toggle("theme-dark");
         } else {
-            layoutContainer.classList.toggle("theme-dark")
+            layoutContainer.classList.toggle("theme-dark");
         }
-    }, [bodyStyle])
+    }, [bodyStyle]);
 
     return (
         <div className="navbar bg-neutral sm:px-56 px-8">
             <div className="flex-1 sm:justify-between justify-center">
-                <Link to="/" className="ps-5 text-xl ">
+                <Link className="ps-5 text-xl " to="/" onClick={restore}>
                     <img
                         src={Logo}
                         alt="logo animarte"
@@ -76,7 +81,11 @@ const NavBar = () => {
 
                 <div className="flex gap-3">
                     <div className="flex items-center justify-end gap-3 pr-5">
-                        <Link className="text-white font-semibold" to="/">
+                        <Link
+                            className="text-white font-semibold"
+                            to="/"
+                            onClick={restore}
+                        >
                             Inicio
                         </Link>
                         <details className="dropdown dropdown-center">
@@ -91,7 +100,9 @@ const NavBar = () => {
                                         className="px-1 hover:bg-neutral hover:text-white hover:rounded hover:cursor-pointer"
                                         onClick={handleCategoryNav}
                                     >
-                                        {category}
+                                        <Link to={`/${category}`} >
+                                            {category}
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -146,9 +157,15 @@ const NavBar = () => {
 
                             {userOffcanvasShow && (
                                 <OffCanvas
-                                    offcanvasTitle={checkRegister}
+                                    offcanvasTitle={
+                                        checkRegister ? "Register" : "Login"
+                                    }
                                     offcanvasContent={
-                                        <LayoutAsk onClose={closeCart} />
+                                        <LayoutAsk
+                                            onClose={closeCart}
+                                            checkRegister={checkRegister}
+                                            setCheckRegister={setCheckRegister}
+                                        />
                                     }
                                     onClose={closeCart}
                                 />

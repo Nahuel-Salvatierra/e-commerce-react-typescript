@@ -18,21 +18,3 @@ export function useCategory() {
 
   return [category];
 }
-
-// export function useRenderCategory() {
-//   const [categoryRender, setCategoryRender] = useState([]) 
-
-//   useEffect(() => {
-//     const fetchRenderCategory = async () => {
-//       try {
-//         const response = await getRenderCategory();
-//         setCategoryRender(response);
-//       }catch(error) {
-//         console.error(error);
-//       }
-//     }
-//     fetchRenderCategory()
-//   },[]);
-
-//   return [categoryRender];
-// }

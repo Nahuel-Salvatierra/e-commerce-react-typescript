@@ -13,28 +13,22 @@ import Unauthorized from './pages/Unauthorized'
 import axios from "axios";
 import { getImage } from "./api/product.api";
 import CardPage from "./pages/cardPage/CardPage";
-function App() {
-  const [products, setProducts] = useState([]);
+import { useProductContext } from "./hook/useProducts";
+import { CardCategoryPage } from "./pages/cardCategoryPage/CardCategoryPage";
+import { useCategory } from "./hook/useCategory";
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/product");
-        const updatedProducts = await Promise.all(
-          response.data.map(async (product) => {
-            const image = product.image;
-            const imageUrl = await getImage(image);
-            product.amount = 1;
-            return { ...product, images: imageUrl };
-          })
-        );
-        setProducts(updatedProducts);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchProduct();
-  }, []);
+function App() {
+  const { product } = useProductContext();
+    let array
+    if (product) {
+        array = Object.values(product);
+    }
+    console.log("Este es", product)
+  const [category] = useCategory()
+
+
+
+
 
   const ROLES ={
     user:'user',
@@ -49,13 +43,24 @@ function App() {
         <Route path="/product" element={<CreateProduct />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
 
-        {products.map((product) => (
+        {/* Card Product  */}
+        {product.map((products) => (
           <Route
-            key={product.title}
-            path={`/${product.id}`}
-            element={<CardPage product={product} />}
+            key={products.title}
+            path={`/${products.id}`}
+            element={<CardPage product={products} />}
           />
-        ))}
+        ),console.log("asdaqweqweqweqweqweqweqw",product))}
+
+        {/* Category Page */}
+        {category.map((category) => (
+          <Route
+            key={category}
+            path={`/${category}`}
+            element={<CardCategoryPage product={category} />}
+          />
+        ), console.log("qweqw", category))}
+
         {/* we want to protect these routes */}
         <Route element={<RequireAuth allowedRoles={[ROLES.user, ROLES.admin]} />}>
           <Route path="/dashboard" element={<Dashboard />} />
