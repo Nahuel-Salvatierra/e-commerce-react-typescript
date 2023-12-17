@@ -1,11 +1,11 @@
 import { useState } from "react";
-import Input from "./Input";
+import Input from "./UI/Input";
 import { INPUTS_CATEGORY, INPUTS_PRODUCT } from "./const/node.elements.product";
-import Button from "./Button";
+import Button from "./UI/Button";
 import { createProduct } from "../api/product.api";
 import { createCategory } from "../api/category.api";
-import Textarea from "./Textarea";
-import Dropdown from "./Dropdown";
+import Textarea from "./UI/Textarea";
+import Dropdown from "./UI/Dropdown";
 import { useCategory } from "../hook/useCategory";
 
 export default function CreateProduct() {
@@ -68,7 +68,7 @@ export default function CreateProduct() {
                     encType="multipart/form-data"
                     className="flex justify-center border w-96"
                 >
-                    <div className="p-10">
+                    <div className="p-10" >
                         <Input {...INPUTS_PRODUCT.title} onChange={onChange} />{" "}
                         <br />
                         <br />

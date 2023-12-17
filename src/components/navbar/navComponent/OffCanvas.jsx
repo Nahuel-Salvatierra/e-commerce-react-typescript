@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useCart } from "./../../../hook/useCart";
-import Modal from "../../Modal";
+import Modal from "../../UI/Modal";
 
 const OffCanvas = ({
     onClose,
