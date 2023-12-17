@@ -1,5 +1,5 @@
 import Button from "./Button";
-import { useCart } from "../hook/useCart";
+import { useCart } from "../../hook/useCart";
 
 export default function Modal() {
     const { cartItems } = useCart();

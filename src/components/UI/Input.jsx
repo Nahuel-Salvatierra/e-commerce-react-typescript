@@ -1,8 +1,8 @@
 function Input({ ...props }) {
   return (
     <>
-      <div>
-        <label className="text-black" htmlFor={props.name}>
+      <div >
+        <label className="text-black" htmlFor={props.name} >
           {props.label}
         </label>
       </div>
