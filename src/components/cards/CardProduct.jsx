@@ -3,15 +3,11 @@ import { useCart } from "./../../hook/useCart";
 // Enrutado
 import { Link } from "react-router-dom";
 import { useProductContext } from "./../../hook/useProducts.jsx";
-import Button from "../Button.jsx";
+import Button from "../UI/Button.jsx";
 
 const CardProduct = ({handleProductNavigate}) => {
     const { addToCart } = useCart();
     const { product } = useProductContext();
-    let array
-    if (product) {
-        array = Object.values(product);
-    }
 
     const handleCart = (selectedProduct) => {
         const newProduct = { ...selectedProduct };
@@ -20,7 +16,7 @@ const CardProduct = ({handleProductNavigate}) => {
 
     return (
         <div className="flex flex-wrap gap-5 justify-center p-7">
-            {array?.map((product) => (
+            {product?.map((product) => (
                 <div
                     key={product.id}
                     className="card w-80 bg-slate-50 shadow-xl border p-7 pb-10"

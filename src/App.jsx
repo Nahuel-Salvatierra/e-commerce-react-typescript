@@ -19,10 +19,7 @@ import { useCategory } from "./hook/useCategory";
 
 function App() {
     const { product } = useProductContext();
-    let array;
-    if (product) {
-        array = Object.values(product);
-    }
+
     const [category] = useCategory();
 
     const ROLES = {
