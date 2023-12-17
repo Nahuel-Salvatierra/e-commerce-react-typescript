@@ -3,7 +3,7 @@ import useAuth from "../../hook/useAuth";
 import { Admin, User } from "./index";
 import { getUserById } from "./../../api/user.api";
 import { IconArrowLeft } from "../../components/IconHero";
-import Button from "../../components/Button";
+import Button from "../../components/UI/Button";
 
 const Dashboard = () => {
     const { auth } = useAuth();
@@ -34,7 +34,7 @@ const Dashboard = () => {
                 </div>
 
                 {edit 
-                ? (<ul>
+                ? (<ul >
                     {Object.keys(user).map((key) => (
                         <li key={key}>
                             <strong>{key}:</strong> {user[key]}

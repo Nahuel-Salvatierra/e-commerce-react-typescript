@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Input from "../Input";
+import Input from "../UI/Input";
 import { INPUTS_REGISTER } from "../const/node.element.auth";
-import Button from "../Button";
+import Button from "../UI/Button";
 import { signUp } from "../../api/auth.api";
 import { useNavigate } from "react-router-dom";
 

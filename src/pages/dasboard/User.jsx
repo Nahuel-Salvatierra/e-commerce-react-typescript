@@ -1,6 +1,6 @@
-import Input from "../../components/Input";
+import Input from "../../components/UI/Input";
 import { INPUTS_USER } from "../../components/const/node.element.user";
-import Button from "../../components/Button";
+import Button from "../../components/UI/Button";
 
 export function User({userData}) {
     return (

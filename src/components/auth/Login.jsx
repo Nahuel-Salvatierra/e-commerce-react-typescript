@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import Button from "../Button";
+import Button from "../UI/Button";
 import { INPUTS_LOGIN } from "../const/node.element.auth";
-import Input from "../Input";
+import Input from "../UI/Input";
 import useAuth from "../../hook/useAuth";
 import { login } from "../../api/auth.api";
 import { useNavigate } from "react-router-dom";
