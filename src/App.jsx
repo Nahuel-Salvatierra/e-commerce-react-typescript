@@ -1,19 +1,15 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Login from "./components/auth/Login";
-import Register from "./components/auth/Register";
+
 import Layout from "./components/Layout";
 import CreateProduct from "./components/CreateProduct";
 import Home from "./pages/home/Home";
 import RequireAuth from "./components/auth/RequiredAuth";
 import Dashboard from "./pages/dasboard/Dashboard";
 import Unauthorized from "./pages/unauthorized/Unauthorized";
-// Enrutado
-import axios from "axios";
-import { getImage } from "./api/product.api";
 import CardPage from "./pages/cardPage/CardPage";
-import { useProductContext } from "./hook/useProducts";
+import { useProductContext } from "./hook/useProductsContext";
 import { CardCategoryPage } from "./pages/cardCategoryPage/CardCategoryPage";
 import { useCategory } from "./hook/useCategory";
 

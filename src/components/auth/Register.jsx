@@ -4,6 +4,7 @@ import { INPUTS_REGISTER } from "../const/node.element.auth";
 import Button from "../UI/Button";
 import { signUp } from "../../api/auth.api";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Register({ onClose }) {
     const [form, setForm] = useState({
@@ -30,8 +31,10 @@ export default function Register({ onClose }) {
 
         try {
             const { res } = await signUp(form);
-            onClose();
-            if (res.status === 201) navigate("/", { replace: true });
+            toast.success('Register success')
+            navigate("/", { replace: true });
+            setTimeout(onClose, 1000)
+
         } catch (error) {
             throw error;
         }

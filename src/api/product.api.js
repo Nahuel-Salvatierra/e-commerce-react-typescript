@@ -28,15 +28,14 @@ export const getProductsFiltered = async (name)=>{
 
 export const getImage = async (img) => {
     try {
-        const response = await axios.get(`/product/image/${img}`, {
+        const response = await axios.get(`/image/${img}`, {
             responseType: "arraybuffer",
         });
 
         const contentType = response.headers["content-type"];
         if (
             contentType &&
-            (contentType.startsWith("image/jpeg") ||
-                contentType.startsWith("image/png"))
+            (contentType.startsWith("image/jpeg") || contentType.startsWith("image/png"))
         ) {
             const imageUrl = URL.createObjectURL(new Blob([response.data]));
             return imageUrl;

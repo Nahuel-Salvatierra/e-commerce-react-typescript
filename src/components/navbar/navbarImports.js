@@ -1,5 +1,4 @@
-// import React, { useState, useEffect } from "react";
-// import "../../App.css";
+
 import Logo from "../../assets/logo/animarte-logo.png";
 import OffCanvas from "./navComponent/OffCanvas";
 import CartOffCanvas from "./navComponent/contentOffCanvas/CartOffCanvas";
@@ -11,8 +10,6 @@ export * from "../IconHero";
 export * from "@heroicons/react/24/outline";
 import MainIconMenu from "./MainIconMenu";
 import MainMenu from "./MainMenu";
-
-//export * from './create-auth.dto';
 
 export {
 	Logo,

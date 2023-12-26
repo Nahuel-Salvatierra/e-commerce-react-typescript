@@ -42,6 +42,7 @@ export default function Login({ onClose }) {
                 <Input {...INPUTS_LOGIN.password} onChange={onChange} />
                 <div className="h-full">
                     <Button
+                        data-cy={'LoginButton'}
                         type={"submit"}
                         text={"Login"}
                         style={"btn btn-neutral w-80 mb-5 "}

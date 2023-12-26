@@ -16,7 +16,7 @@ export default {
 
           "base-100": "#f2ffff",
           
-          "base-200": "#000", //Funciona para agregar otro color
+          "base-200": "#000",
 
           "info": "#3b82f6",
 

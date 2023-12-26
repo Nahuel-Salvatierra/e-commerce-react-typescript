@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../App.css";
-import { useProductContext } from "../../hook/useProducts";
+import { useProductContext } from "../../hook/useProductsContext";
 import { Disclosure } from "@headlessui/react";
 import {
 	Modal,

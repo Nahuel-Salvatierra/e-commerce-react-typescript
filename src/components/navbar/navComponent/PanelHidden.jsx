@@ -1,4 +1,4 @@
-import { useProductContext } from "../../../hook/useProducts";
+import { useProductContext } from "../../../hook/useProductsContext";
 import { Disclosure } from "@headlessui/react";
 import CategoryDropDown from "./CategoryDropdown";
 import { Link } from "react-router-dom";
