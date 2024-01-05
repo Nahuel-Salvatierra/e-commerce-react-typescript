@@ -11,7 +11,7 @@ export function CartProvider({ children }) {
       (existProduct) => existProduct.id === product.id
     );
     if (existingProduct === undefined) {
-      setCartItems(() => [...cartItems, product]);
+      setCartItems(() => [...cartItems, {...product, amount :1}]);
     } else {
       const updatedCart = cartItems.map((item) =>
         item.id === existingProduct.id
