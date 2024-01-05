@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Title1",
+    "category": {
+      "name": "Cuaderno A5",
+      "price": 3000
+    },
+    "description": "Some description",
+    "images":"https://img.freepik.com/foto-gratis/vista-superior-cuadernos-mesa_23-2148816279.jpg?size=626&ext=jpg&ga=GA1.1.1687694167.1704240000&semt=ais"
+  },
+  {
+    "id": 2,
+    "title": "Title2",
+    "category": {
+      "name": "Cuaderno A5",
+      "price": 3000
+    },
+    "description": "Some description",
+    "images":"https://img.freepik.com/foto-gratis/vista-superior-cuadernos-mesa_23-2148816279.jpg?size=626&ext=jpg&ga=GA1.1.1687694167.1704240000&semt=ais"
+  }
+]

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCategoryName } from "../api/category.api";
+import { getCategoryName } from "../services/category-service";
 
 export function useCategory() {
   const [category, setCategory] = useState([]);

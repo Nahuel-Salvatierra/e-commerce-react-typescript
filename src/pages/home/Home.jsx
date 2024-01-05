@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { getProducts } from "../../api/product.api";
+import React from "react";
 import CardProduct from "../../components/cards/CardProduct";
-import { Link } from "react-router-dom";
 
 const Home = () => {
 

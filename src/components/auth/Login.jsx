@@ -4,7 +4,7 @@ import Button from "../UI/Button";
 import { INPUTS_LOGIN } from "../const/node.element.auth";
 import Input from "../UI/Input";
 import useAuth from "../../hook/useAuth";
-import { login } from "../../api/auth.api";
+import { login } from "../../services/auth-service";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Alerts from "../Alerts";

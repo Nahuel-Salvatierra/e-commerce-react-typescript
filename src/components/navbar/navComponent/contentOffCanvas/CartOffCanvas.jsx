@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {useCart} from "./../../../../hook/useCart";
 import {IconTrash} from "./../../../IconHero"
 
 const CartOffCanvas = () => {
-	const { cartItems, removeFromCart, setCartItems, removeAmount, addAmount } = useCart();
+	const { cartItems, removeFromCart, removeAmount, addAmount } = useCart();
 
 	return (
-		<div>
+		<div data-cy='cart'>
 			{cartItems.map((item, index) => (
-				<div className="border rounded-lg w-full p-2 mb-4 md:flex text-center " key={index}>
-					<div className="ml-auto block md:hidden flex justify-end">
-						<button
-						onClick={() => removeFromCart(item.id)}
-						>
-							<IconTrash className="block md:hidden" />
-						</button>
+				<div className="border rounded-lg w-full p-2 mb-4 md:flex text-center " data-cy='card-product' key={index}>
+					<div className="ml-auto block md:hidden justify-end">
 					</div>
 					<div className="flex-shrink-0 flex justify-center">
 						<img
@@ -28,17 +23,17 @@ const CartOffCanvas = () => {
 							<h3 className="text-xl font-bold">{item.title}</h3>
 						</div>
 						<div className=" flex justify-center">
-							<p className="text-lg font-bold">
+							<p data-cy='cart-subtotal' className="text-lg font-bold">
 								{" "}
 								${item.category.price * item.amount}{" "}
 							</p>
 						</div>
 						<div className="flex justify-center">
 							<div
-								id="carrito-cantidad"
 								className="flex items-center"
 							>
 								<button
+									data-cy='remove-amount-item'
 									className="border px-2"
 									onClick={() => removeAmount(item)}
 								>
@@ -46,6 +41,7 @@ const CartOffCanvas = () => {
 								</button>
 								<span className="mx-2">{item.amount}</span>
 								<button
+									data-cy='add-amount-item'
 									className="border px-2"
 									onClick={() => addAmount(item)}
 								>
@@ -56,6 +52,7 @@ const CartOffCanvas = () => {
 					</div>
 					<div className="ml-auto hidden md:block">
 						<button
+						data-cy='remove-from-cart'
 						onClick={() => removeFromCart(item.id)}
 						>
 							<IconTrash className="hidden md:block" />

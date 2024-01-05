@@ -1,0 +1,12 @@
+[
+	{
+		"id": 1,
+		"name": "Cuaderno A5",
+		"price": 3000
+	},
+	{
+		"id": 2,
+		"name": "Cuaderno A6",
+		"price": 1500
+	}
+]

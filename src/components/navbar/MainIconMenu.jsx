@@ -55,7 +55,7 @@ export default function MainIconMenu({
 				</button>
 			</div>
 
-			<button id="buyIcon" onClick={handleCart}>
+			<button data-cy="buy-icon" onClick={handleCart}>
 				{
 					<IconCart
 						className={

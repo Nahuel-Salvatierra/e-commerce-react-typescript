@@ -26,30 +26,9 @@ export const getProductsFiltered = async (name)=>{
 	}
 }
 
-export const getImage = async (img) => {
-    try {
-        const response = await axios.get(`/image/${img}`, {
-            responseType: "arraybuffer",
-        });
-
-        const contentType = response.headers["content-type"];
-        if (
-            contentType &&
-            (contentType.startsWith("image/jpeg") || contentType.startsWith("image/png"))
-        ) {
-            const imageUrl = URL.createObjectURL(new Blob([response.data]));
-            return imageUrl;
-        } else {
-            console.error("La respuesta no es una imagen JPEG");
-            return null;
-        }
-    } catch (error) {
-        console.error(error);
-        return null;
-    }
-};
-
 export const getOne = async (id) => {
     const response = await axios.get(`/product/${id}`);
     return response;
 };
+
+

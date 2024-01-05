@@ -4,19 +4,10 @@ import { Link } from "react-router-dom";
 
 export default function CategoryDropDown() {
 
-
   const handleCategoryNav = async (e) => {
 		const category = e.target.textContent;
 		const response = await getProductsFiltered(category);
-		const updatedProducts = await Promise.all(
-			response.map(async (product) => {
-				const image = product.image;
-				const imageUrl = await getImage(image);
-				product.amount = 1;
-				return { ...product, images: imageUrl };
-			})
-		);
-		filterProducts(updatedProducts);
+		filterProducts(response);
 	};
 
 	const [categoryName] = useCategory();
