@@ -34,7 +34,7 @@ const CardProduct = ({handleProductNavigate}) => {
                         <p> {product.category.name} </p>
                         <p> {product.description} </p>
                         <div className="card-actions justify-between items-center">
-                            <p> {product.category.price} </p>
+                            <p> ${product.category.price} </p>
                         </div>
                         <div className="flex justify-between">
                             <Link to={`/${product.id}`} onClick={handleProductNavigate}>
@@ -50,7 +50,6 @@ const CardProduct = ({handleProductNavigate}) => {
                             />
                         </div>
                     </div>
-                    {/* </Link> */}
                 </div>
             ))}
         </div>
