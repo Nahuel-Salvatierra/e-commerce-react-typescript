@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../hook/useAuth";
 import { Admin, User } from "./index";
-import { getUserById } from "./../../api/user.api";
+import { getUserById } from "./../../services/user-service";
 import { IconArrowLeft } from "../../components/IconHero";
-import Button from "../../components/UI/Button";
 
 const Dashboard = () => {
     const { auth } = useAuth();

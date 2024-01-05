@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Input from "../UI/Input";
 import { INPUTS_REGISTER } from "../const/node.element.auth";
 import Button from "../UI/Button";
-import { signUp } from "../../api/auth.api";
+import { signUp } from "../../services/auth-service";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
