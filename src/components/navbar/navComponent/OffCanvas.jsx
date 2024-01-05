@@ -99,7 +99,7 @@ const OffCanvas = ({
                                         {showButton && (
                                             <div className="flex justify-center">
                                                 <button
-                                                    id="finishBuy"
+                                                    data-cy='buy-button'
                                                     className={`btn btn-neutral w-96`}
                                                     disabled={
                                                         onClickValidation

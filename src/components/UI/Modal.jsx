@@ -24,7 +24,7 @@ export default function Modal() {
     };
 
     return (
-        <dialog id="my_modal_2" className="modal">
+        <dialog id="my_modal_2" className="modal" data-cy='finish-buy-modal'>
             <div className="modal-box">
                 <h3 className="font-bold text-lg">Estas por comprar:</h3>
                 {cartItems.map(
